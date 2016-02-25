@@ -1,9 +1,10 @@
-<!doctype html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>welcome</title>
+    <title>Admin</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -48,9 +49,9 @@
                         <div class="col-sm-13">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search for...">
-							      <span class="input-group-btn">
-							        <button class="btn btn-default" type="button">Go!</button>
-							      </span>
+									  <span class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									  </span>
                             </div>
                         </div>
                     </form>
@@ -69,29 +70,44 @@
         <div class="panel-body">
 
             <div class="row">
-                <div class="col-sm-3 col-md-4">
-                    <form id="ContactForm" method="post" action="#">
-                        <div class="form-group">
-                            <label for="ContactName">User Name</label>
-                            <input type="email" class="form-control" id="userName" placeholder="John">
+                <div class="col-md-8">
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Add New Course</div>
+                        <div class="panel-body">
+                            <form id="ContactForm" method="post" action="#">
+                                <div class="form-group">
+                                    <label for="Name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="John">
+                                </div>
+                                <div class="form-group">
+                                    <label for="text">Start Time</label>
+                                    <input type="time" class="form-control" id="staartTime" placeholder="12:00pm">
+                                </div>
+                                <div class="form-group">
+                                    <label for="endtime">End Time</label>
+                                    <input type="time" class="form-control" id="endTime" placeholder="12:00am">
+                                </div>
+                                <div class="form-group">
+                                    <label for="year">Year</label>
+                                    <input type="text" class="form-control" id="year" placeholder="John">
+                                </div>
+                                <button type="button" class="btn btn-default" id="contactbtn">Submit</button>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="Password">Password</label>
-                            <input type="password" class="form-control" id="pwd">
-                        </div>
-                        <button type="button" class="btn btn-default" id="contactbtn">Login</button>
-                    </form>
+                    </div>
                 </div>
 
             </div>
 
-
         </div>
     </div>
 </div>
+</div>
 <!--end of main content-->
-
-
 <!--footer-->
 <footer class="site-footer">
     <div class="container">
