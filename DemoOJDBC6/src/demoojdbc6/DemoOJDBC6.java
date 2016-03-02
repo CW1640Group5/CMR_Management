@@ -30,9 +30,7 @@ public class DemoOJDBC6 {
         System.out.println("Oracle JDBC Driver Registered!");
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521:xe", "sys as sysdba",
-                    "12345");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "sys as sysdba","12345");
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
             e.printStackTrace();
