@@ -12,8 +12,8 @@ h2{
 }
 #img2{
 	
-	width: 200px;
-	height: 160px;
+	width: 100%;
+	height: 300px;
 }
 .site-footer{
 	background-color: #222;
@@ -43,3 +43,4 @@ h2{
 	color: #fff;
 	text-decoration: none;
 }
+
