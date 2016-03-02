@@ -72,6 +72,7 @@ CREATE TABLE CMR
     LINK         VARCHAR2(300),
     CL_id        VARCHAR2(20),
     Course_id    VARCHAR2(20),
+	static       VARCHAR2(20),
     FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
