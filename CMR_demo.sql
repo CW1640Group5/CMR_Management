@@ -76,3 +76,20 @@ CREATE TABLE CMR
     FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
+  
+  
+  
+  --insert new course
+  create or replace procedure addNewCourse(
+    p_id in Course.Course_id%TYPE,
+    p_name in Course.Course_name%TYPE,
+    p_start_time in Course.start_time%TYPE,
+    p_end_time in Course.end_time%TYPE
+  )
+  is
+  begin
+    insert into Course values (p_id, p_name, to_date(p_start_time,'mm-dd-yyyy'), to_date(p_end_time,'mm-dd-yyyy'));
+  end;
+  insert into Course values ('C12345','Web Design', to_date('01-01-2016','mm-dd-yyyy'), to_date('01-01-2017','mm-dd-yyyy'));
+  select * from Course;
+  --end insert new course
