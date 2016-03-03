@@ -77,12 +77,9 @@ CREATE TABLE CMR
     Course_id    VARCHAR2(20),
     static       VARCHAR2(20),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
-  );
-<<<<<<< HEAD
+  );  
   
-  
-  
-  --insert new course
+  --insert new course Giap
   create or replace procedure addNewCourse(
     p_id in Course.Course_id%TYPE,
     p_name in Course.Course_name%TYPE,
@@ -95,8 +92,8 @@ CREATE TABLE CMR
   end;
   insert into Course values ('C12345','Web Design', to_date('01-01-2016','mm-dd-yyyy'), to_date('01-01-2017','mm-dd-yyyy'));
   select * from Course;
-  --end insert new course
-=======
+  --end insert new course Giap
+  
 
 insert into Course values('comp_1640','Enterprise Web Software',TO_DATE('01-10-2016','mm-dd-yyyy'),TO_DATE('04-14-2016','mm-dd-yyyy'));
 insert into Course values('comp_1649','interaction design',TO_DATE('01-10-2016','mm-dd-yyyy'),TO_DATE('04-28-2016','mm-dd-yyyy'));
@@ -117,5 +114,3 @@ insert into CMR_Users values(seq_User_id.nextval,'Mr.F','M',TO_DATE('01-10-1990'
 insert into CL values('cl001',1,'comp_1640',TO_DATE('01-10-2016','mm-dd-yyyy'));
 insert into CL values('cl001',1,'comp_1649',TO_DATE('01-10-2016','mm-dd-yyyy'));
 insert into CL values('cl001',1,'comp_1661',TO_DATE('01-10-2016','mm-dd-yyyy'));
-
->>>>>>> origin/master
