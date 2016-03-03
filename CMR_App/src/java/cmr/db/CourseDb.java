@@ -6,19 +6,47 @@
 package cmr.db;
 
 import cmr.entity.Course;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author BUIVUHUECHI
- */
 public class CourseDB {
+    public boolean addNewCourse(String id, String name, String startTime, String endTime) {
+        Connection conn = null;
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+	startTime = sdf.format(new Date());
+        endTime = sdf.format(new Date());
+        try {
+            conn = ConnectionUtil.getConnection();
+//            CallableStatement cstmt = conn.prepareCall("{insert into Course values ('?','?', to_date('?','mm-dd-yyyy'), to_date('?','mm-dd-yyyy'));}");
+            CallableStatement cstmt = conn.prepareCall("{addNewCourse(?,?,?,?)}");
+            
+            cstmt.setString("id", id);
+            cstmt.setString("name", name);
+            cstmt.setString("start_time", startTime);
+            cstmt.setString("end_time", endTime);
+
+            int result = cstmt.executeUpdate();
+            if (result > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionUtil.closeConnection(conn);
+        }
+        return false;
+    }
+    
     public List<Course> getListCourseAsign(String id){
          Connection conn=null;
         List<Course> listcourse=new ArrayList<>();

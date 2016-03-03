@@ -5,7 +5,7 @@
  */
 package cmr.servlet;
 
-import cmr.db.CourseDb;
+import cmr.db.CourseDB;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -80,7 +80,7 @@ public class CourseServlet extends HttpServlet {
     }// </editor-fold>
 
     private void addNewCourse(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        CourseDb db = new CourseDb();
+        CourseDB db = new CourseDB();
         String cId = request.getParameter("txtcID");
         String cName = request.getParameter("txtcName");
         String cStartDate = request.getParameter("txtcStartDate");
