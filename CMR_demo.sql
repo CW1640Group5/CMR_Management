@@ -36,15 +36,18 @@ CREATE TABLE faculty
     end_time     DATE,
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
+  
 CREATE TABLE CL
   (
-    CL_id       VARCHAR2(20) PRIMARY KEY,
+    CL_id       VARCHAR2(20),
     User_id     INT,
     Course_id   VARCHAR2(20),
     assign_time DATE,
+    CONSTRAINT pk_CL PRIMARY KEY (CL_id,Course_id),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
+  
 CREATE TABLE PVC
   (
     User_id     INT,
@@ -72,10 +75,10 @@ CREATE TABLE CMR
     LINK         VARCHAR2(300),
     CL_id        VARCHAR2(20),
     Course_id    VARCHAR2(20),
-	static       VARCHAR2(20),
-    FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
+    static       VARCHAR2(20),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
+<<<<<<< HEAD
   
   
   
@@ -93,3 +96,26 @@ CREATE TABLE CMR
   insert into Course values ('C12345','Web Design', to_date('01-01-2016','mm-dd-yyyy'), to_date('01-01-2017','mm-dd-yyyy'));
   select * from Course;
   --end insert new course
+=======
+
+insert into Course values('comp_1640','Enterprise Web Software',TO_DATE('01-10-2016','mm-dd-yyyy'),TO_DATE('04-14-2016','mm-dd-yyyy'));
+insert into Course values('comp_1649','interaction design',TO_DATE('01-10-2016','mm-dd-yyyy'),TO_DATE('04-28-2016','mm-dd-yyyy'));
+insert into Course values('comp_1661','Application Development for Mobile Devices',TO_DATE('01-10-2016','mm-dd-yyyy'),TO_DATE('04-15-2016','mm-dd-yyyy'));
+
+CREATE SEQUENCE seq_role_id;
+insert into Role values(seq_role_id.nextval,'admin');
+insert into Role values(seq_role_id.nextval,'staff');
+
+CREATE SEQUENCE seq_User_id;
+insert into CMR_Users values(seq_User_id.nextval,'Mr.A','M',TO_DATE('01-10-1990','mm-dd-yyyy'),2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users values(seq_User_id.nextval,'Mr.B','M',TO_DATE('01-10-1990','mm-dd-yyyy'),2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users values(seq_User_id.nextval,'Mr.C','M',TO_DATE('01-10-1990','mm-dd-yyyy'),2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users values(seq_User_id.nextval,'Mr.D','M',TO_DATE('01-10-1990','mm-dd-yyyy'),2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users values(seq_User_id.nextval,'Mr.E','M',TO_DATE('01-10-1990','mm-dd-yyyy'),2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users values(seq_User_id.nextval,'Mr.F','M',TO_DATE('01-10-1990','mm-dd-yyyy'),2,'asadsda','0123456789','sdaas@asd.com');
+
+insert into CL values('cl001',1,'comp_1640',TO_DATE('01-10-2016','mm-dd-yyyy'));
+insert into CL values('cl001',1,'comp_1649',TO_DATE('01-10-2016','mm-dd-yyyy'));
+insert into CL values('cl001',1,'comp_1661',TO_DATE('01-10-2016','mm-dd-yyyy'));
+
+>>>>>>> origin/master
