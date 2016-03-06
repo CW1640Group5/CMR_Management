@@ -43,3 +43,7 @@ public class DemoOJDBC6 {
         }
     }
 }
+
+//            jdbc:oracle:thin:@localhost:1521:XE [system on SYS]
+//            return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "sys as sysdba","chi1234");
+//           return DriverManager.getConnection("jdbc:oracle:thin:sys/12345@localhost:1521:xe");

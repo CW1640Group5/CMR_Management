@@ -18,9 +18,8 @@ import java.util.logging.Logger;
 public class ConnectionUtil {
     public static Connection getConnection(){
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-           return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "sys as sysdba","12345");
-            //return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "sys as sysdba","chi1234");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+           return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=MusicNetwork");         
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
         }

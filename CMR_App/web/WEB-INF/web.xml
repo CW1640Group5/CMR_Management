@@ -4,7 +4,7 @@
         <servlet-name>CourseServlet</servlet-name>
         <servlet-class>cmr.servlet.CourseServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
+   <servlet-mapping>
         <servlet-name>CourseServlet</servlet-name>
         <url-pattern>/course</url-pattern>
     </servlet-mapping>

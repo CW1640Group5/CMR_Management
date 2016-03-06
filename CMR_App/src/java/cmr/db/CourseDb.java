@@ -27,6 +27,7 @@ public class CourseDB {
         endTime = sdf.format(new Date());
         try {
             conn = ConnectionUtil.getConnection();
+            System.out.println("finish");
 //            CallableStatement cstmt = conn.prepareCall("{insert into Course values ('?','?', to_date('?','mm-dd-yyyy'), to_date('?','mm-dd-yyyy'));}");
             CallableStatement cstmt = conn.prepareCall("{addNewCourse(?,?,?,?)}");
             
@@ -34,8 +35,9 @@ public class CourseDB {
             cstmt.setString("name", name);
             cstmt.setString("start_time", startTime);
             cstmt.setString("end_time", endTime);
-
+            System.out.println("start excute update");
             int result = cstmt.executeUpdate();
+            System.out.println("finish excute");
             if (result > 0) {
                 return true;
             }

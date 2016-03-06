@@ -32,7 +32,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Add New Course</div>
                     <div class="panel-body">
-                        <form id="ContactForm" method="post" action="#">
+                        <form id="ContactForm" action="CourseServlet" method="post" >
                             <div class="form-group">
                                 <label for="Name">Course ID</label>
                                 <input type="text" name="txtcID" class="form-control" id="name" placeholder="C12345" value="c555">
