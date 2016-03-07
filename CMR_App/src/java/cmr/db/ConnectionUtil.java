@@ -19,7 +19,7 @@ public class ConnectionUtil {
     public static Connection getConnection(){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-           return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=MusicNetwork");         
+           return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=CMR", "sa", "sa");         
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
         }

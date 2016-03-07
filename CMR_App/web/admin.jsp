@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
     <head>
         <meta charset="utf-8">
         <meta charset="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +31,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Add New Course</div>
                     <div class="panel-body">
-                        <form id="ContactForm" action="CourseServlet" method="post" >
+                        <form id="ContactForm" action="course" method="post" >
                             <div class="form-group">
                                 <label for="Name">Course ID</label>
                                 <input type="text" name="txtcID" class="form-control" id="name" placeholder="C12345" value="c555">
@@ -49,14 +48,13 @@
                                 <label for="endtime">End Time</label>
                                 <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="mm-dd-yyyy" value="12-25-2017">
                             </div>
-                            <button type="button" name="act" value="addNewCourse" class="btn btn-default" id="contactbtn">Submit</button>
-                            
                             <c:if test="${!empty(msgBlue)}" >
-                                <h2 style="color:blue;">${msgR}</h2>
+                                <p style="color:blue;">${msgR}</p>
                             </c:if>
                             <c:if test="${!empty(msgR)}" >
-                                <h2 style="color:red;">${msgR}</h2>
+                                <p style="color:red;">${msgR}</p>
                             </c:if>
+                            <button name="act" value="submitAdd" class="btn btn-default" id="contactbtn">Submit</button>
                         </form>
                     </div>
                 </div></div>

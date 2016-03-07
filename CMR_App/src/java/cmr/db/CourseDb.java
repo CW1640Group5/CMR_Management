@@ -19,25 +19,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CourseDB {
-    public boolean addNewCourse(String id, String name, String startTime, String endTime) {
+    public boolean addNewCourse(String id, String name, Date startTime, Date endTime) {
+//        SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+//	startTime = sdf.format(new Date());
+//        endTime = sdf.format(new Date());
         Connection conn = null;
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
-	startTime = sdf.format(new Date());
-        endTime = sdf.format(new Date());
         try {
             conn = ConnectionUtil.getConnection();
-            System.out.println("finish");
-//            CallableStatement cstmt = conn.prepareCall("{insert into Course values ('?','?', to_date('?','mm-dd-yyyy'), to_date('?','mm-dd-yyyy'));}");
-            CallableStatement cstmt = conn.prepareCall("{addNewCourse(?,?,?,?)}");
+            CallableStatement cstmt = conn.prepareCall("{call usp_addNewCourse(?,?,?,?)}");
             
             cstmt.setString("id", id);
             cstmt.setString("name", name);
-            cstmt.setString("start_time", startTime);
-            cstmt.setString("end_time", endTime);
-            System.out.println("start excute update");
+            cstmt.setDate("start_time", (java.sql.Date) startTime);
+            cstmt.setDate("start_time", (java.sql.Date) endTime);
+//            cstmt.setDate("start_time", startTime);
+//            cstmt.setString("end_time", endTime);
             int result = cstmt.executeUpdate();
-            System.out.println("finish excute");
             if (result > 0) {
                 return true;
             }
@@ -61,7 +58,7 @@ public class CourseDB {
                 String name=rs.getString("COURSE_NAME");
                 Date startdate=rs.getDate("START_TIME");
                 Date enddate=rs.getDate("END_TIME");
-                listcourse.add(new Course(Id, name, String.valueOf(startdate),String.valueOf(enddate)));
+                listcourse.add(new Course(Id, name, startdate, enddate));
             }
         } catch (Exception e) {
             e.printStackTrace();
