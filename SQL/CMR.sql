@@ -34,8 +34,8 @@ CREATE TABLE Course
   (
     Course_id   nvarchar(20) PRIMARY KEY,
     Course_name nvarchar(100),
-    start_time  datetime,
-    end_time    datetime
+    start_time  nvarchar(30),
+    end_time    nvarchar(30)
   );
   go
 CREATE TABLE faculty
@@ -44,8 +44,8 @@ CREATE TABLE faculty
     faculty_name nvarchar(100),
     Course_id    nvarchar(20),
     class_id     nvarchar(20),
-    start_time   datetime,
-    end_time     datetime,
+    start_time   nvarchar(30),
+    end_time     nvarchar(30),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
   go
@@ -54,7 +54,7 @@ CREATE TABLE CL
     CL_id       nvarchar(20),
     User_id     INT,
     Course_id   nvarchar(20),
-    assign_time datetime,
+    assign_time nvarchar(30),
     CONSTRAINT pk_CL PRIMARY KEY (CL_id,Course_id),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
@@ -64,7 +64,7 @@ CREATE TABLE PVC
   (
     User_id     INT ,
     faculty_id  nvarchar(20),
-    assign_time datetime,
+    assign_time nvarchar(30),
     CONSTRAINT pk_PVC PRIMARY KEY (User_id, faculty_id),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id)
@@ -75,7 +75,7 @@ CREATE TABLE DLT
     DLT_id      nvarchar(20),
     User_id     INT,
     faculty_id  nvarchar(20),
-    assign_time datetime,
+    assign_time nvarchar(30),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id)
   );

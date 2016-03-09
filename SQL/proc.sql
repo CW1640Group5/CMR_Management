@@ -5,11 +5,11 @@ go
 create procedure usp_addNewCourse
 @c_id nvarchar(20),
 @c_name nvarchar(100),
-@start_time datetime,
-@end_time datetime
+@start_time nvarchar(30),
+@end_time nvarchar(30)
 as
 begin
-	insert into Course values('@c_id','@c_name','@start_time','@end_time');
+	insert into Course values(@c_id,@c_name,@start_time,@end_time);
 end
 select * from Course;
 

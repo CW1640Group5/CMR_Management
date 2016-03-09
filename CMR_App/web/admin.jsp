@@ -31,7 +31,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Add New Course</div>
                     <div class="panel-body">
-                        <form id="ContactForm" action="course" method="post" >
+                        <form action="course" method="post" >
                             <div class="form-group">
                                 <label for="Name">Course ID</label>
                                 <input type="text" name="txtcID" class="form-control" id="name" placeholder="C12345" value="c555">
@@ -42,17 +42,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="text">Start Time</label>
-                                <input type="datetime" name="txtcStartDate" class="form-control" id="startTime" placeholder="mm-dd-yyyy" value="12-25-2016">
+                                <input type="datetime" name="txtcStartDate" class="form-control" id="startTime" placeholder="MM/dd/yyyy" value="12/25/2016">
                             </div>
                             <div class="form-group">
                                 <label for="endtime">End Time</label>
-                                <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="mm-dd-yyyy" value="12-25-2017">
+                                <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017">
                             </div>
+                            <br/>
                             <c:if test="${!empty(msgBlue)}" >
-                                <p style="color:blue;">${msgR}</p>
+                                <p style="color:blue;" class="text-success">${msgBlue}</p>
                             </c:if>
                             <c:if test="${!empty(msgR)}" >
-                                <p style="color:red;">${msgR}</p>
+                                <p style="color:red;" class="text-warning">${msgR}</p>
                             </c:if>
                             <button name="act" value="submitAdd" class="btn btn-default" id="contactbtn">Submit</button>
                         </form>
