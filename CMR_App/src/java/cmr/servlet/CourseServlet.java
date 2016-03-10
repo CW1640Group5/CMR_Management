@@ -7,12 +7,6 @@ package cmr.servlet;
 
 import cmr.db.CourseDB;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -84,32 +78,39 @@ public class CourseServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void addNewCourse(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            CourseDB db = new CourseDB();
-            String cId = request.getParameter("txtcID");
-            String cName = request.getParameter("txtcName");
-            String startDate = request.getParameter("txtcStartDate");
-            String endDate = request.getParameter("txtcEndDate");
+    private void addNewCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CourseDB db = new CourseDB();
+        String cId = request.getParameter("txtcID");
+        String cName = request.getParameter("txtcName");
+        String startDate = request.getParameter("txtcStartDate");
+        String endDate = request.getParameter("txtcEndDate");
 
 //            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 //            Date cStartDate = sdf.parse(startDate);
 //            Date cEndDate = sdf.parse(endDate);
-            if (!cId.equals("") && !cName.equals("") && !startDate.equals("") && !endDate.equals("")) {
-                boolean result = db.addNewCourse(cId, cName, startDate, endDate);
-                if (result) {
-                    request.setAttribute("msgBlue", "New Course Added");
-                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-                } else {
-                    request.setAttribute("msgR", "Add New course Fail");
-                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-                }
+        if (cId.equals("") && cName.equals("") && startDate.equals("") && endDate.equals("")) {
+            request.setAttribute("msgR", "Something wrong! Add New Course Fail");
+//            request.getRequestDispatcher("/admin.jsp").forward(request, response);
+//            return;
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/course");
+            dispatcher.forward(request, response);
+            return;
+        } else {
+            boolean result = db.addNewCourse(cId, cName, startDate, endDate);
+            if (result) {
+                request.setAttribute("msgBlue", "New Course Added");
+//                    request.getRequestDispatcher("admin.jsp").forward(request, response);
+//                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
+//                dispatcher.forward(request, response);
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/course");
+                dispatcher.forward(request, response);
+                return;
             } else {
-                request.setAttribute("msgR", "Something wrong! Add New Course Fail");
-                request.getRequestDispatcher("admin.jsp").forward(request, response);
+                request.setAttribute("msgR", "Add New course Fail");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/course");
+                dispatcher.forward(request, response);
+                return;
             }
-        } catch (ServletException | IOException ex) {
-            Logger.getLogger(CourseServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

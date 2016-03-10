@@ -1,8 +1,11 @@
 <!doctype html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta charset="utf-8">
-        <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--<meta charset="viewport" content="width=device-width, initial-scale=1.0">-->
         <title>Admin</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
@@ -48,14 +51,14 @@
                                 <label for="endtime">End Time</label>
                                 <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017">
                             </div>
-                            <br/>
-                            <c:if test="${!empty(msgBlue)}" >
-                                <p style="color:blue;" class="text-success">${msgBlue}</p>
-                            </c:if>
-                            <c:if test="${!empty(msgR)}" >
-                                <p style="color:red;" class="text-warning">${msgR}</p>
-                            </c:if>
                             <button name="act" value="submitAdd" class="btn btn-default" id="contactbtn">Submit</button>
+                            <br/>
+                                <c:if test="${!empty(msgBlue)}" >
+                                    <p style="color:blue;">${msgBlue}</p>
+                                </c:if>
+                                <c:if test="${!empty(msgR)}" >
+                                    <p style="color:red;">${msgR}</p>
+                                </c:if>
                         </form>
                     </div>
                 </div></div>
