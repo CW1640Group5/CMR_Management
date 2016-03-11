@@ -51,14 +51,14 @@ CREATE TABLE faculty
   go
 CREATE TABLE CL
   (
-    CL_id       nvarchar(20),
+    CL_id       nvarchar(20) primary key,
     User_id     INT,
     Course_id   nvarchar(20),
     assign_time nvarchar(30),
-    CONSTRAINT pk_CL PRIMARY KEY (CL_id,Course_id),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
+  
   go
 CREATE TABLE PVC
   (
@@ -83,15 +83,36 @@ CREATE TABLE DLT
 CREATE TABLE CMR
   (
     CMR_id       INT PRIMARY KEY identity(1,1),
-    type         nvarchar(100),
-    documentcode nvarchar(20),
-    name         nvarchar(200),
-    LINK         nvarchar(300),
-    CL_id        nvarchar(20),
+    AcademicSession         nvarchar(100),
     Course_id    nvarchar(20),
+	CL_id        nvarchar(20),
     static       nvarchar(20),
+	Studentcount int,
+	comments text,
+	Action text,
+	FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
+
+Create table StatisticalData(
+	id INT PRIMARY KEY identity,
+	CMR_id INT,
+	DataName varchar(10),
+	Mean text,
+	Median text,
+	StandardDeviation text,
+	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id)
+);
+
+create table GradeDistributionData(
+	id INT PRIMARY KEY identity,
+	CMR_id INT,
+	grade float,
+	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id)
+);
+
+
+  
 
 --INSERT DATABASE HERE
 go
