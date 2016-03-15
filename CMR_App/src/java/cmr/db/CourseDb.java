@@ -24,14 +24,6 @@ import java.util.logging.Logger;
  */
 public class CourseDB {
     public boolean addNewCourse(String id, String name, String startTime, String endTime) {
-//        Timestamp newStartTime = new Timestamp(startTime.getTime());
-//        Timestamp newEndTime = new Timestamp(endTime.getTime());
-
-//        long newStartTime = startTime.getTime();
-//        java.sql.Date sqlStartTime = new java.sql.Date(newStartTime);
-//        long newEndTime = startTime.getTime();
-//        java.sql.Date sqlEndTime = new java.sql.Date(newEndTime);
-
         Connection conn = null;
         try {
             conn = ConnectionUtil.getConnection();
@@ -53,31 +45,7 @@ public class CourseDB {
         return false;
     }
 
-//    public List addNewCourse(Course course) {
-//                Timestamp newStartTime = new Timestamp(course.getStart_time().getTime());
-//        Timestamp newEndTime = new Timestamp(course.getEnd_time().getTime());
-//        Connection conn = null;
-//        try {
-//            conn = ConnectionUtil.getConnection();
-//            CallableStatement cstmt = conn.prepareCall("{call usp_addNewCourse(?,?,?,?)}");
-//            cstmt.setString("id", course.getId());
-//            cstmt.setString("name", course.getCourse_name());
-//            cstmt.setTimestamp("start_time", newStartTime);
-//            cstmt.setTimestamp("end_time", newEndTime);
-//            cstmt.executeUpdate();
-////            comment.setCommentId(cstmt.getInt("CommentId"));
-////            comment.setTime(new DateTime(cstmt.getDate("Time").getTime()));
-////            List<Comment> listOfComments = new ArrayList<>();
-////            listOfComments.add(comment);
-////            return listOfComments;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(CourseDB.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            ConnectionUtil.closeConnection(conn);
-//        }
-//        return null;
-//    }
-    public List<Course> getListCourseAsign(String id) {
+    public List<Course> getListCourseAsigned(String id) {
         Connection conn = null;
         List<Course> listcourse = new ArrayList<>();
         try {

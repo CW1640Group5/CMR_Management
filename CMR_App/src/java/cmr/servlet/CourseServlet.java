@@ -30,12 +30,15 @@ public class CourseServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+//        response.setContentType("text/html;charset=UTF-8");
+
         String action = request.getParameter("act");
-        if (action.equals("submitAdd")) {
+
+        if (action != null && action.equals("submitAdd")) {
             addNewCourse(request, response);
+            return;
         }
+        request.getRequestDispatcher("admin.jsp").forward(request, response);
 
     }
 
@@ -92,7 +95,7 @@ public class CourseServlet extends HttpServlet {
             request.setAttribute("msgR", "Something wrong! Add New Course Fail");
 //            request.getRequestDispatcher("/admin.jsp").forward(request, response);
 //            return;
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/course");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
             dispatcher.forward(request, response);
             return;
         } else {
@@ -102,12 +105,12 @@ public class CourseServlet extends HttpServlet {
 //                    request.getRequestDispatcher("admin.jsp").forward(request, response);
 //                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
 //                dispatcher.forward(request, response);
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/course");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
                 dispatcher.forward(request, response);
                 return;
             } else {
                 request.setAttribute("msgR", "Add New course Fail");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/course");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
                 dispatcher.forward(request, response);
                 return;
             }

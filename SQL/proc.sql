@@ -16,6 +16,9 @@ end
 go
 select * from Course;
 
+--end insert new course Giap
+
+--insert new CMR by CL
 go
 drop procedure usp_addNewCMR
 go
@@ -34,5 +37,9 @@ end
 go
 select * from CMR;
 
+--end
 
-  --end insert new course Giap
+
+---CHI Proc abc
+select DISTINCT Course.Course_id,Course.COURSE_NAME,Course.START_TIME,Course.END_TIME from Course,CL where CL.CL_ID='cl001'
+--end

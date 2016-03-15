@@ -5,8 +5,10 @@
  */
 package cmr.servlet;
 
+import cmr.db.CmrDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,17 +32,10 @@ public class CMRServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CMRServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CMRServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        request.getRequestDispatcher("AddNewCMR.jsp").forward(request, response);
+        String action = request.getParameter("act");
+        if (action.equals("createCMR")) {
+            createNewCMR(request, response);
         }
     }
 
@@ -82,5 +77,30 @@ public class CMRServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void createNewCMR(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        CmrDB db = new CmrDB();
+        String type = request.getParameter("txtType");
+        String doccumentCode = request.getParameter("txtDocCode");
+        String name = request.getParameter("txtName");
+        String link = request.getParameter("txtLink");
+        String cl_id = request.getParameter("txtClId");
+        String course_id = request.getParameter("txtCourseID");
+        String statics = request.getParameter("txtStatic");
+
+        boolean result = db.addNewCMR(type, doccumentCode, name, link, cl_id, course_id, statics);
+        if (result) {
+            request.setAttribute("msgBlue", "CMR Added");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/cmr");
+            dispatcher.forward(request, response);
+            return;
+        } else {
+            request.setAttribute("msgR", "Add CMR Fail");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/cmr");
+            dispatcher.forward(request, response);
+            return;
+        }
+    }
 
 }
