@@ -7,15 +7,17 @@ go
 CREATE TABLE Role
   ( 
 	Role_id INT PRIMARY KEY identity(1,1),
-	Role_type nvarchar(30)
+	Role_type nvarchar(30)--admin/CL/DLT
   );
  go
 CREATE TABLE CMR_Users
   (
     User_id   INT PRIMARY KEY identity(1,1),
     User_name nvarchar(20),
+	uPassword nvarchar(60),
+	SessionId varchar(200),
     gender    CHAR CONSTRAINT user_check CHECK (gender IN ('F','M')),
-    DOB       date,
+    DOB       nvarchar(10),
     Role_id   INT,
     address   nvarchar(100),
     phone     nvarchar(20),
@@ -127,34 +129,35 @@ insert into faculty values ('fac003', 'Ngo Tung Son', 'comp_1661', 'B14', '01-10
 
 go
 insert into Role values
-('Role_type_1'), 
-('role_type_2'), 
+('Admin'), 
+('Course Leader'), 
 ('role_type_3');
 
 go
-insert into CMR_Users values('Admin','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Nguyen Thuy Duong','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Jaya','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Ngo Tung Son','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.E','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.F','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.G','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.H','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.I','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.J','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.K','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.L','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.M','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
-insert into CMR_Users values('Mr.N','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
+('Admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Nguyen Thuy Duong', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Jaya', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Ngo Tung Son', '21232f297a57a5a743894a0e4a801fc3','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.E', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.F', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.G', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.H', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.I', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.J', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.K', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.L', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.M', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.N', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
  
 go
 insert into Administrators values (1);
-select*from Administrators
+select*from CMR_Users
 
 go
-insert into CL values('cl001',1,'comp_1640','01-10-2016');
-insert into CL values('cl001',1,'comp_1649','01-10-2016');
-insert into CL values('cl001',1,'comp_1661','01-10-2016');
+insert into CL values('cl001',2,'comp_1640','01-10-2016');
+insert into CL values('cl002',3,'comp_1649','01-10-2016');
+insert into CL values('cl003',4,'comp_1661','01-10-2016');
 
 go
 insert into PVC values (2, 'fac001', '02-10-2016');
@@ -170,11 +173,8 @@ insert into DLT values('DLT_05', 9, 'fac001', '03-10-2016');
 insert into DLT values('DLT_06', 10, 'fac001', '03-10-2016');
 
 go
-insert into CMR values ('type1', 'docode01', 'CMR_Name_1', '#', 'cl001', 'comp_1640', 'static 1');
-insert into CMR values ('type2', 'docode02', 'CMR_Name_2', '#', 'cl001', 'comp_1640', 'static 2');
-insert into CMR values ('type3', 'docode03', 'CMR_Name_3', '#', 'cl001', 'comp_1640', 'static 3');
-insert into CMR values ('type4', 'docode04', 'CMR_Name_4', '#', 'cl001', 'comp_1640', 'static 4');
-insert into CMR values ('type5', 'docode05', 'CMR_Name_5', '#', 'cl001', 'comp_1640', 'static 5');
-insert into CMR values ('type6', 'docode06', 'CMR_Name_6', '#', 'cl001', 'comp_1640', 'static 6');
+insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', 25, 'comments 1', 'Action1');
+insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', 23, 'comments 2', 'Action2');
+insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', 22, 'comments 3', 'Action3');
 
 --END INSERT DATABASE

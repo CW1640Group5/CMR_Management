@@ -54,7 +54,7 @@
                                 <label for="endtime">End Time</label>
                                 <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017">
                             </div>
-                            <button name="act" value="submitAdd" class="btn btn-default" id="contactbtn">Submit</button>
+                            <button name="act" value="btnAddNewCourse" class="btn btn-default" id="contactbtn">Submit</button>
                             <br/>
                             <c:if test="${!empty(msgBlue)}" >
                                 <p style="color:blue;">${msgBlue}</p>

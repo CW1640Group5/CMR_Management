@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>AccountServlet</servlet-name>
-        <servlet-class>cmr.servlet.AccountServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CourseServlet</servlet-name>
         <servlet-class>cmr.servlet.CourseServlet</servlet-class>
     </servlet>
@@ -12,10 +8,10 @@
         <servlet-name>CMRServlet</servlet-name>
         <servlet-class>cmr.servlet.CMRServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>AccountServlet</servlet-name>
-        <url-pattern>/account</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>CMR_UsersServlet</servlet-name>
+        <servlet-class>cmr.servlet.CMR_UsersServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CourseServlet</servlet-name>
         <url-pattern>/course</url-pattern>
@@ -24,12 +20,16 @@
         <servlet-name>CMRServlet</servlet-name>
         <url-pattern>/cmr</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CMR_UsersServlet</servlet-name>
+        <url-pattern>/cmr_users</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>admin.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

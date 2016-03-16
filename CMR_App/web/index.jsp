@@ -70,16 +70,19 @@
 
                     <div class="row">
                         <div class="col-sm-3 col-md-4">
-                            <form id="ContactForm" method="post" action="#">
+                            <form id="ContactForm" method="post" action="cmr_users">
                                 <div class="form-group">
                                     <label for="ContactName">User Name</label>
-                                    <input type="email" class="form-control" id="userName" placeholder="John">
+                                    <input type="text" class="form-control" id="userName" name="txtUserName" placeholder="User name">
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="pwd">
+                                    <input type="password" class="form-control" id="pwd" name="txtPassword" placeholder="Password">
                                 </div>
-                                <button type="button" class="btn btn-default" id="contactbtn">Login</button>
+                                <button class="btn btn-default" id="contactbtn" name="act" value="btnLogin">Login</button>
+                                <c:if test="${!empty(msg)}" >
+                                    <p style="color:red;">${msg}</p>
+                                </c:if>
                             </form>
                         </div>
 

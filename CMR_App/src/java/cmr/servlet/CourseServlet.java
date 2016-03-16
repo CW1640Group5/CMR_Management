@@ -30,11 +30,11 @@ public class CourseServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
         String action = request.getParameter("act");
 
-        if (action != null && action.equals("submitAdd")) {
+        if (action != null && action.equals("btnAddNewCourse")) {
             addNewCourse(request, response);
             return;
         }
@@ -88,13 +88,8 @@ public class CourseServlet extends HttpServlet {
         String startDate = request.getParameter("txtcStartDate");
         String endDate = request.getParameter("txtcEndDate");
 
-//            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-//            Date cStartDate = sdf.parse(startDate);
-//            Date cEndDate = sdf.parse(endDate);
         if (cId.equals("") && cName.equals("") && startDate.equals("") && endDate.equals("")) {
             request.setAttribute("msgR", "Something wrong! Add New Course Fail");
-//            request.getRequestDispatcher("/admin.jsp").forward(request, response);
-//            return;
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
             dispatcher.forward(request, response);
             return;
@@ -102,9 +97,6 @@ public class CourseServlet extends HttpServlet {
             boolean result = db.addNewCourse(cId, cName, startDate, endDate);
             if (result) {
                 request.setAttribute("msgBlue", "New Course Added");
-//                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-//                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin.jsp");
-//                dispatcher.forward(request, response);
                 RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
                 dispatcher.forward(request, response);
                 return;

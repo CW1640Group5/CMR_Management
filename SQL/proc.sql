@@ -18,6 +18,22 @@ select * from Course;
 
 --end insert new course Giap
 
+--login proc
+
+drop procedure usp_Login
+go
+create procedure usp_Login
+	@user_name varchar(50),
+	@uPassword varchar(50)
+as
+Begin
+	select User_id, User_name, mail from CMR_Users where User_name = @user_name and uPassword = @uPassword
+end
+
+select User_id, User_name, mail from CMR_Users where User_name = 'admin' and uPassword = '21232f297a57a5a743894a0e4a801fc3'
+
+--end login
+
 --insert new CMR by CL
 go
 drop procedure usp_addNewCMR
