@@ -12,10 +12,10 @@
         <!--header -->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header col-sm-9">
+                <div class="navbar-header col-sm-8">
                     <a class="navbar-brand" href="#">Group5</a>
                     <form class="form-group">
-                        <div class="col-xs-8" style="margin-top: 8px;">
+                        <div class="col-xs-8" style="margin-top: 6px;">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search for...">
                                 <span class="input-group-btn">
