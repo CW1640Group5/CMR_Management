@@ -42,18 +42,19 @@
                         <li>
                             <a href="#">Services</a>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Admin</a></li>
                         <li>
-                            <form class="form-inline ">
-                                <div class="col-sm-13">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search for...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Go!</button>
-                                        </span>
+                            <div style="margin-top: 8px;">
+                                <form class="form-inline ">
+                                    <div class="col-sm-13">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search for...">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Go!</button>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </li>
                     </ul>
                 </div>

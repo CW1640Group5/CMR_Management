@@ -47,7 +47,8 @@
                         <li>
                             <a href="#">Services</a>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Course Leader</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
+                        <li><a href="index.jsp">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -60,7 +61,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Add CMR</div>
                     <div class="panel-body">
-                        <form action="course" method="post" >
+                        <form action="cmr" method="post" >
                             <div class="form-group">
                                 <label for="type">Type</label>
                                 <input type="text" name="txtType" class="form-control" id="name" placeholder="Type of CMR" value="Type of CMR">
@@ -87,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="static">Static</label>
-                                <input type="text" name="txtType" class="form-control" id="name" placeholder="Yes or No" value="No">
+                                <input type="text" name="txtStatic" class="form-control" id="name" placeholder="Yes or No" value="No">
                             </div>
                             
                             <button name="act" value="createCMR" class="btn btn-default" id="contactbtn">Create</button>

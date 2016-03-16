@@ -47,7 +47,8 @@
                         <li>
                             <a href="#">Services</a>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Course Leader</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
+                        <li><a href="index.jsp">Logout</a></li>
                     </ul>
                 </div>
             </div>

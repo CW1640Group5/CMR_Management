@@ -10,56 +10,34 @@
     </head>
     <body>
         <!--header -->
-        <nav class="navbar navbar-inverse navbar-static-top " role="navigation">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-EV-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-
-                <div class="navbar-header navbar-inverse">
-                    <a class="navbar-brand" href="index.html">Group5</a>
+                <div class="navbar-header col-sm-9">
+                    <a class="navbar-brand" href="#">Group5</a>
+                    <form class="form-group">
+                        <div class="col-xs-8" style="margin-top: 8px;">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="collapse navbar-collapse navbar-right" id="bs-EV-navbar-collapse-1">
-
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="index.html">
-                                <span class="glyphicon glyphicon-home" style="color:white;"></span>
-                                Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#">School</a>
-                        </li>
-                        <li>
-                            <a href="#">Services</a>
-                        </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Course Leader</a></li>
-                        <li>
-                            <form class="form-inline ">
-                                <div class="col-sm-13">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search for...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Go!</button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="index.html">
+                            <span class="glyphicon glyphicon-home" style="color:white;"></span>
+                            Home</a>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
+                    <li><a href="#">About Us</a></li> 
+                    <li><a href="index.jsp">Logout</a></li>
+                </ul>
 
             </div>
-
         </nav>
-
         <!--end ofheader -->
         <!--main content-->
         <div class="container">

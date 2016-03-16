@@ -23,8 +23,9 @@
                             <span class="glyphicon glyphicon-home" style="color:white;"></span>
                             Home</a>
                     </li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>Admin</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
                     <li><a href="#">About Us</a></li> 
+                    <li><a href="index.jsp">Logout</a></li>
                 </ul>
 
             </div>
