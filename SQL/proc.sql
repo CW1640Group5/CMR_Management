@@ -55,17 +55,18 @@ create procedure usp_addNewCMR
 @academicSession nvarchar(100),
 @course_id    nvarchar(20),
 @cl_id        nvarchar(20),
-@studentcount int
+@studentCount nvarchar(50)
 as
 begin
-	insert into CMR (AcademicSession, Course_id, CL_id, Studentcount) 
-	values (@academicSession, @course_id, @cl_id, @studentcount);
+	insert into CMR(AcademicSession, Course_id, CL_id, Studentcount) 
+	values (@academicSession, @course_id, @cl_id, @studentCount);
 end
 
-insert into CMR (AcademicSession, Course_id, CL_id, Studentcount) 
-	values ('fgdgdf', 'comp_1661', 'cl001', 34);
+insert into CMR(AcademicSession, Course_id, CL_id, Studentcount) 
+	values ('fgdgdf', 'comp_1661', 'cl001', '34');
 
 go
+exec usp_addNewCMR @academicSession='dfsfds',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
 select * from CMR;
 
 --end

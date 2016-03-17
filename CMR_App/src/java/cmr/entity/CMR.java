@@ -20,6 +20,13 @@ public class CMR {
     private String comments;
     private String Action;
 
+    public CMR(String academicSession, String Course_id, String CL_id, int Studentcount) {
+        this.academicSession = academicSession;
+        this.Course_id = Course_id;
+        this.CL_id = CL_id;
+        this.Studentcount = Studentcount;
+    }
+
     public CMR(int cmr_Id, String academicSession, String Course_id, String CL_id, String statics, int Studentcount, String comments, String Action) {
         this.cmr_Id = cmr_Id;
         this.academicSession = academicSession;

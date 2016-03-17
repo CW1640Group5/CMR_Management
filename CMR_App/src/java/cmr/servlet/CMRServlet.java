@@ -7,7 +7,6 @@ package cmr.servlet;
 
 import cmr.db.CmrDB;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -80,13 +79,24 @@ public class CMRServlet extends HttpServlet {
     }// </editor-fold>
 
     private void createNewCMR(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("act");
 
+        if (action != null && action.equals("btnAddCMR")) {
+            addNewCMR(request, response);
+            return;
+        }
+        request.getRequestDispatcher("AddNewCMR.jsp").forward(request, response);
+
+    }
+
+    private void addNewCMR(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CmrDB db = new CmrDB();
         String academicSession = request.getParameter("txtAcademicSession");
         String course_id = request.getParameter("txtCourse_id");
         String cl_id = request.getParameter("txtCl_id");
-        int studentcount = Integer.parseInt(request.getParameter("txtStudentcount"));
-        
+        String studentcount = request.getParameter("txtStudentcount");
+//        int studentcount = Integer.parseInt(request.getParameter("txtStudentcount"));
+
         boolean result = db.addNewCMR(academicSession, course_id, cl_id, studentcount);
         if (result) {
             request.setAttribute("msgBlue", "CMR Added");

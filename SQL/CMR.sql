@@ -95,7 +95,7 @@ CREATE TABLE CMR
     Course_id    nvarchar(20),
 	CL_id        nvarchar(20),
     static       nvarchar(20),
-	Studentcount int,
+	Studentcount nvarchar(50),
 	comments text,
 	Action text,
 	FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
@@ -183,8 +183,8 @@ insert into DLT values('DLT_05', 9, 'fac001');
 insert into DLT values('DLT_06', 10, 'fac001');
 
 go
-insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', 25, 'comments 1', 'Action1');
-insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', 23, 'comments 2', 'Action2');
-insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', 22, 'comments 3', 'Action3');
+insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '25', 'comments 1', 'Action1');
+insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2');
+insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3');
 
 --END INSERT DATABASE
