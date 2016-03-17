@@ -11,9 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +21,26 @@ import java.util.logging.Logger;
  * @author Nguyen
  */
 public class CourseDB {
-    public boolean addNewCourse(String id, String name, String startTime, String endTime) {
+    
+    public void getCourseName() {
+        List<Course> listCourseName = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = ConnectionUtil.getConnection();
+            CallableStatement cst = conn.prepareCall(" { call usp_getCourseName() } ");
+            ResultSet rs = cst.executeQuery();
+            while (rs.next()) {
+                String courseName = rs.getString("Course_name");
+                listCourseName.add(new Course(courseName));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionUtil.closeConnection(conn);
+        }
+    }
+    
+    public boolean addNewCourse(String id, String name,String description, String startTime, String endTime) {
         Connection conn = null;
         try {
             conn = ConnectionUtil.getConnection();
@@ -31,6 +48,7 @@ public class CourseDB {
 
             cstmt.setString("c_id", id);
             cstmt.setString("c_name", name);
+            cstmt.setString("description", description);
             cstmt.setString("start_time", startTime);
             cstmt.setString("end_time", endTime);
             int result = cstmt.executeUpdate();
@@ -57,7 +75,7 @@ public class CourseDB {
                 String name = rs.getString("COURSE_NAME");
                 String startdate = rs.getString("START_TIME");
                 String enddate = rs.getString("END_TIME");
-                listcourse.add(new Course(Id, name, startdate, enddate));
+//                listcourse.add(new Course(Id, name, startdate, enddate));
             }
             return listcourse;
         } catch (Exception e) {
