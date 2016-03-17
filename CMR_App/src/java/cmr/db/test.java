@@ -32,7 +32,7 @@ public class test {
 //        } catch (ParseException ex) {
 //            Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        CourseDB db = new CourseDB();
+        CourseDb db = new CourseDb();
 
         try {
             String input1 = "12/25/2016";

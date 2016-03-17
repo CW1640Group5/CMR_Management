@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Nguyen
  */
-public class CourseDB {
+public class CourseDb {
     
     public void getCourseName() {
         List<Course> listCourseName = new ArrayList<>();
@@ -34,7 +34,7 @@ public class CourseDB {
                 listCourseName.add(new Course(courseName));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CourseDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CourseDb.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnectionUtil.closeConnection(conn);
         }
@@ -56,7 +56,7 @@ public class CourseDB {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CourseDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CourseDb.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnectionUtil.closeConnection(conn);
         }

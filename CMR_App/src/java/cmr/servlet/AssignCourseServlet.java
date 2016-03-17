@@ -5,7 +5,7 @@
  */
 package cmr.servlet;
 
-import cmr.db.CourseDB;
+import cmr.db.CourseDb;
 import cmr.entity.Course;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +38,7 @@ public class AssignCourseServlet extends HttpServlet {
         String action = request.getParameter("act");
         String courseName = request.getParameter("cbCourseName");
         if (action != null && action.equals("btnAssignCourse")) {
-            CourseDB db = new CourseDB();
+            CourseDb db = new CourseDb();
             db.getCourseName();
 //            request.setAttribute("listOfCourse", listOfAllCourseName);
             RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAssign.jsp");
