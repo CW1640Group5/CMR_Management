@@ -1,17 +1,30 @@
---insert new course Giap
 use CMR;
-go
 
+--get course name
+go
+drop procedure usp_getCourseName
+go
+create procedure usp_getCourseName
+as
+begin
+	select Course_name from Course;
+end
+--end usp_getCourseName
+
+--insert new course Giap
+
+go
 drop procedure usp_addNewCourse
 go
 create procedure usp_addNewCourse
 @c_id nvarchar(20),
 @c_name nvarchar(100),
+@description nvarchar(max),
 @start_time nvarchar(30),
 @end_time nvarchar(30)
 as
 begin
-	insert into Course values(@c_id,@c_name,@start_time,@end_time);
+	insert into Course values(@c_id,@c_name,@description,@start_time,@end_time);
 end
 go
 select * from Course;
@@ -39,17 +52,19 @@ go
 drop procedure usp_addNewCMR
 go
 create procedure usp_addNewCMR
-@type         nvarchar(100),
-@documentcode nvarchar(20),
-@name         nvarchar(200),
-@link         nvarchar(300),
-@CL_id        nvarchar(20),
+@academicSession nvarchar(100),
 @course_id    nvarchar(20),
-@static       nvarchar(20)
+@cl_id        nvarchar(20),
+@studentcount int
 as
 begin
-	insert into CMR values (@type, @documentcode, @name, @link, @CL_id, @course_id, @static);
+	insert into CMR (AcademicSession, Course_id, CL_id, Studentcount) 
+	values (@academicSession, @course_id, @cl_id, @studentcount);
 end
+
+insert into CMR (AcademicSession, Course_id, CL_id, Studentcount) 
+	values ('fgdgdf', 'comp_1661', 'cl001', 34);
+
 go
 select * from CMR;
 

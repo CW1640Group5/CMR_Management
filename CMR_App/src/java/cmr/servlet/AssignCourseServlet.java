@@ -6,7 +6,11 @@
 package cmr.servlet;
 
 import cmr.db.CourseDB;
+import cmr.entity.Course;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen
  */
-public class CourseServlet extends HttpServlet {
+public class AssignCourseServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,15 +35,17 @@ public class CourseServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         String action = request.getParameter("act");
-
-        if (action != null && action.equals("btnAddNewCourse")) {
-            addNewCourse(request, response);
+        String courseName = request.getParameter("cbCourseName");
+        if (action != null && action.equals("btnAssignCourse")) {
+            CourseDB db = new CourseDB();
+            db.getCourseName();
+//            request.setAttribute("listOfCourse", listOfAllCourseName);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAssign.jsp");
+            dispatcher.forward(request, response);
             return;
         }
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
-
+        request.getRequestDispatcher("AdminAssign.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,34 +86,5 @@ public class CourseServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void addNewCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CourseDB db = new CourseDB();
-        String cId = request.getParameter("txtcID");
-        String cName = request.getParameter("txtcName");
-        String description = request.getParameter("txtDescription");
-        String startDate = request.getParameter("txtcStartDate");
-        String endDate = request.getParameter("txtcEndDate");
-
-        if (cId.equals("") && cName.equals("") && startDate.equals("") && endDate.equals("")) {
-            request.setAttribute("msgR", "Something wrong! Add New Course Fail");
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
-            dispatcher.forward(request, response);
-            return;
-        } else {
-            boolean result = db.addNewCourse(cId, cName, description, startDate, endDate);
-            if (result) {
-                request.setAttribute("msgBlue", "New Course Added");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
-                dispatcher.forward(request, response);
-                return;
-            } else {
-                request.setAttribute("msgR", "Add New course Fail");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin.jsp");
-                dispatcher.forward(request, response);
-                return;
-            }
-        }
-    }
 
 }

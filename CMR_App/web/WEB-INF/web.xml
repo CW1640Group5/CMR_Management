@@ -12,6 +12,10 @@
         <servlet-name>CMR_UsersServlet</servlet-name>
         <servlet-class>cmr.servlet.CMR_UsersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AssignCourseServlet</servlet-name>
+        <servlet-class>cmr.servlet.AssignCourseServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CourseServlet</servlet-name>
         <url-pattern>/course</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CMR_UsersServlet</servlet-name>
         <url-pattern>/cmr_users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AssignCourseServlet</servlet-name>
+        <url-pattern>/assignCourse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

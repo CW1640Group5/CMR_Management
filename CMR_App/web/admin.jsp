@@ -40,22 +40,29 @@
                     <div class="panel-body">
                         <form action="course" method="post" >
                             <div class="form-group">
-                                <label for="Name">Course ID</label>
+                                <label for="id">Course ID</label>
                                 <input type="text" name="txtcID" class="form-control" id="name" placeholder="C12345" value="c555">
                             </div>
                             <div class="form-group">
                                 <label for="Name">Course Name</label>
-                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Web Design" value="fagdhs">
+                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Web Design" value="Web design">
                             </div>
                             <div class="form-group">
-                                <label for="text">Start Time</label>
+                                <label for="description">Description</label>
+                                <input type="text" name="txtDescription" class="form-control" id="name" placeholder="Description" value="Description">
+                            </div>
+                            <div class="form-group">
+                                <label for="startTime">Start Time</label>
                                 <input type="datetime" name="txtcStartDate" class="form-control" id="startTime" placeholder="MM/dd/yyyy" value="12/25/2016">
                             </div>
                             <div class="form-group">
-                                <label for="endtime">End Time</label>
+                                <label for="endTime">End Time</label>
                                 <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017">
                             </div>
                             <button name="act" value="btnAddNewCourse" class="btn btn-default" id="contactbtn">Submit</button>
+                            <button  value="btnAsignToCL" class="btn btn-default" id="contactbtn">
+                                <a href="AdminAssign.jsp" style="text-decoration: none;"> Asign to Course Leader</a>
+                            </button>
                             <br/>
                             <c:if test="${!empty(msgBlue)}" >
                                 <p style="color:blue;">${msgBlue}</p>
@@ -74,7 +81,7 @@
             <div class="container">
 
                 <div class="bottom-footer">
-                    <div class="col-md-5">&copy Copyright of Danbliss Onass 2016</div>
+                    <div class="col-md-5">&copy Copyright of Group 5</div>
                     <div class="col-md-7">
                         <ul class="footer-nav">
                             <li><a href="index.html">Home</a></li>

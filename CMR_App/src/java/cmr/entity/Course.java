@@ -5,8 +5,6 @@
  */
 package cmr.entity;
 
-import java.util.Date;
-
 /**
  *
  * @author Nguyen
@@ -15,14 +13,28 @@ public class Course {
 
     private String id;
     private String course_name;
+    private String description;
     private String start_time;
     private String end_time;
 
-    public Course(String id, String course_name, String start_time, String end_time) {
+    public Course(String course_name) {
+        this.course_name = course_name;
+    }
+
+    public Course(String id, String course_name, String description, String start_time, String end_time) {
         this.id = id;
         this.course_name = course_name;
+        this.description = description;
         this.start_time = start_time;
         this.end_time = end_time;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getId() {

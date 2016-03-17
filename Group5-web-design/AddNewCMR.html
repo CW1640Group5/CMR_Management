@@ -57,53 +57,191 @@
         <!--end of header -->
         <!--main content-->
         <div class="container">
-            <div class="jumbotron">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Add CMR</div>
-                    <div class="panel-body">
-                        <form action="cmr" method="post" >
-                            <div class="form-group">
-                                <label for="type">Type</label>
-                                <input type="text" name="txtType" class="form-control" id="name" placeholder="Type of CMR" value="Type of CMR">
-                            </div>
-                            <div class="form-group">
-                                <label for="docCode">Document Code</label>
-                                <input type="text" name="txtDocCode" class="form-control" id="name" placeholder="Document Code of CMR" value="DC-001">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" name="txtName" class="form-control" id="name" placeholder="Name of CMR" value="This is CMR name">
-                            </div>
-                            <div class="form-group">
-                                <label for="link">Link</label>
-                                <input type="text" name="txtLink" class="form-control" id="name" placeholder="Link of document" value="http://www.abc.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="cl_id">CL_ID</label>
-                                <input type="text" name="txtClId" class="form-control" id="name" placeholder="cl001" value="cl001">
-                            </div>
-                            <div class="form-group">
-                                <label for="cID">Course_ID</label>
-                                <input type="text" name="txtCourseID" class="form-control" id="name" placeholder="courseID" value="comp_1640">
-                            </div>
-                            <div class="form-group">
-                                <label for="static">Static</label>
-                                <input type="text" name="txtStatic" class="form-control" id="name" placeholder="Yes or No" value="No">
-                            </div>
-                            
-                            <button name="act" value="createCMR" class="btn btn-default" id="contactbtn">Create</button>
-                            <br/>
-                            <c:if test="${!empty(msgBlue)}" >
-                                <p style="color:blue;">${msgBlue}</p>
-                            </c:if>
-                            <c:if test="${!empty(msgR)}" >
-                                <p style="color:red;">${msgR}</p>
-                            </c:if>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<div class="card">
+					<div class="col-md-6"><div class="panel panel-default">
+					  <div class="panel-heading">Course Monitoring Report</div>
+					  <div class="panel-body">
+
+						<div class="table-responsive">
+						<table class="table table-bordered">
+						  <tr class="active"></tr>
+							<tr class="success">
+								<td class="active">Academic Session</td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td class="success">Course Code + tittle</td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td class="success">Course Leader</td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td class="success">Student Count</td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+				</div>
+				<div class="col-md-6">
+						<div class="panel panel-default">
+						  <div class="panel-heading">Statistical Data</div>
+						  <div class="panel-body">
+						  	<div class="table-responsive">
+							  <table class="table table-bordered">
+							   <tr>
+								  <td class="success"></td>
+								  <td class="success">Cw1</td>
+								  <td class="success">CW2</td>
+								  <td class="success">CW3</td>
+								  <td class="success">CW4</td>
+								  <td class="success">Exam</td>
+								  <td class="success">Overall</td>
+								</tr>
+								<tr>
+								  <td class="success">Mean</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">Median</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">Standard Deviation</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+							  </table>
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="container">
+			<div class="row">
+				<div class="container">
+					<div class="panel panel-default">
+					  <div class="panel-heading">Grade Distribution</div>
+					  <div class="panel-body">
+					    	<div class="table-responsive">
+							  <table class="table table-bordered">
+							   <tr>
+							   	<td class="success"></td>
+								  <td class="success">0-9</td>
+								  <td class="success">10-19</td>
+								  <td class="success">20-29</td>
+								  <td class="success">30-39</td>
+								  <td class="success">40-49</td>
+								  <td class="success">50-59</td>
+								  <td class="success">60-69</td>
+								  <td class="success">70-79</td>
+								  <td class="success">80-89</td>
+								  <td class="success">90+</td>
+								</tr>
+								<tr>
+								  <td class="success">CW1</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">CW2</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">CW3</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">CW4</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">EX</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+								<tr>
+								  <td class="success">Overral</td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								  <td class="success"></td>
+								</tr>
+							  </table>
+							</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			</div>
         <!--end of main content-->
         <!--footer-->
         <footer class="site-footer">

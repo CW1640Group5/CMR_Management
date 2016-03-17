@@ -12,33 +12,23 @@ package cmr.entity;
 public class CMR {
 
     private int cmr_Id;
-    private String type;
-    private String doccumentCode;
-    private String name;
-    private String link;
-    private String cl_id;
-    private String course_id;
+    private String academicSession;
+    private String Course_id;
+    private String CL_id;
     private String statics;
+    private int Studentcount;
+    private String comments;
+    private String Action;
 
-    public CMR(String type, String doccumentCode, String name, String link, String cl_id, String course_id, String statics) {
-        this.type = type;
-        this.doccumentCode = doccumentCode;
-        this.name = name;
-        this.link = link;
-        this.cl_id = cl_id;
-        this.course_id = course_id;
-        this.statics = statics;
-    }
-
-    public CMR(int cmr_Id, String type, String doccumentCode, String name, String link, String cl_id, String course_id, String statics) {
+    public CMR(int cmr_Id, String academicSession, String Course_id, String CL_id, String statics, int Studentcount, String comments, String Action) {
         this.cmr_Id = cmr_Id;
-        this.type = type;
-        this.doccumentCode = doccumentCode;
-        this.name = name;
-        this.link = link;
-        this.cl_id = cl_id;
-        this.course_id = course_id;
+        this.academicSession = academicSession;
+        this.Course_id = Course_id;
+        this.CL_id = CL_id;
         this.statics = statics;
+        this.Studentcount = Studentcount;
+        this.comments = comments;
+        this.Action = Action;
     }
 
     public int getCmr_Id() {
@@ -49,52 +39,28 @@ public class CMR {
         this.cmr_Id = cmr_Id;
     }
 
-    public String getType() {
-        return type;
+    public String getAcademicSession() {
+        return academicSession;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDoccumentCode() {
-        return doccumentCode;
-    }
-
-    public void setDoccumentCode(String doccumentCode) {
-        this.doccumentCode = doccumentCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getCl_id() {
-        return cl_id;
-    }
-
-    public void setCl_id(String cl_id) {
-        this.cl_id = cl_id;
+    public void setAcademicSession(String academicSession) {
+        this.academicSession = academicSession;
     }
 
     public String getCourse_id() {
-        return course_id;
+        return Course_id;
     }
 
-    public void setCourse_id(String course_id) {
-        this.course_id = course_id;
+    public void setCourse_id(String Course_id) {
+        this.Course_id = Course_id;
+    }
+
+    public String getCL_id() {
+        return CL_id;
+    }
+
+    public void setCL_id(String CL_id) {
+        this.CL_id = CL_id;
     }
 
     public String getStatics() {
@@ -103,6 +69,30 @@ public class CMR {
 
     public void setStatics(String statics) {
         this.statics = statics;
+    }
+
+    public int getStudentcount() {
+        return Studentcount;
+    }
+
+    public void setStudentcount(int Studentcount) {
+        this.Studentcount = Studentcount;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getAction() {
+        return Action;
+    }
+
+    public void setAction(String Action) {
+        this.Action = Action;
     }
 
 }

@@ -17,18 +17,15 @@ import java.util.logging.Logger;
  */
 public class CmrDB {
     
-    public boolean addNewCMR(String type, String doccumentCode, String name, String link, String cl_id, String course_id, String statics) {
+    public boolean addNewCMR(String academicSession, String course_id, String cl_id, int studentcount) {
         Connection conn = null;
         try {
             conn = ConnectionUtil.getConnection();
-            CallableStatement cstmt = conn.prepareCall("{call usp_addNewCMR(?,?,?,?,?,?,?)}");
-            cstmt.setString("type", type);
-            cstmt.setString("documentcode", doccumentCode);
-            cstmt.setString("name", name);
-            cstmt.setString("link", link);
-            cstmt.setString("CL_id", cl_id);
+            CallableStatement cstmt = conn.prepareCall("{call usp_addNewCMR(?,?,?,?)}");
+            cstmt.setString("academicSession", academicSession);
             cstmt.setString("course_id", course_id);
-            cstmt.setString("static", statics);
+            cstmt.setString("cl_id", cl_id);
+            cstmt.setInt("studentcount", studentcount);
             int result = cstmt.executeUpdate();
             if (result > 0) {
                 return true;

@@ -36,6 +36,7 @@ CREATE TABLE Course
   (
     Course_id   nvarchar(20) PRIMARY KEY,
     Course_name nvarchar(100),
+	Description nvarchar(max),
     start_time  nvarchar(30),
     end_time    nvarchar(30)
   );
@@ -56,17 +57,23 @@ CREATE TABLE CL
     CL_id       nvarchar(20) primary key,
     User_id     INT,
     Course_id   nvarchar(20),
-    assign_time nvarchar(30),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
-  
+  go
+  CREATE TABLE CM
+  (
+    CM_id       nvarchar(20) primary key,
+    User_id     INT,
+    Course_id   nvarchar(20),
+    FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
+    FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
+  );
   go
 CREATE TABLE PVC
   (
     User_id     INT ,
     faculty_id  nvarchar(20),
-    assign_time nvarchar(30),
     CONSTRAINT pk_PVC PRIMARY KEY (User_id, faculty_id),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id)
@@ -77,7 +84,6 @@ CREATE TABLE DLT
     DLT_id      nvarchar(20),
     User_id     INT,
     faculty_id  nvarchar(20),
-    assign_time nvarchar(30),
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
     FOREIGN KEY (faculty_id) REFERENCES faculty(faculty_id)
   );
@@ -118,9 +124,9 @@ create table GradeDistributionData(
 
 --INSERT DATABASE HERE
 go
-insert into Course values('comp_1640','Enterprise Web Software','01-10-2016','04-14-2016');
-insert into Course values('comp_1649','interaction design','01-10-2016','04-28-2016');
-insert into Course values('comp_1661','Application Development for Mobile Devices','01-10-2016','04-15-2016');
+insert into Course values('comp_1640','Enterprise Web Software','description','01-10-2016','04-14-2016');
+insert into Course values('comp_1649','interaction design','description','01-10-2016','04-28-2016');
+insert into Course values('comp_1661','Application Development for Mobile Devices','description','01-10-2016','04-15-2016');
 
 go
 insert into faculty values ('fac001', 'Nguyen Thuy Duong', 'comp_1640', 'B14', '01-10-2016', '01-10-2017');
@@ -139,9 +145,9 @@ insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phon
 ('Nguyen Thuy Duong', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Jaya', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Ngo Tung Son', '21232f297a57a5a743894a0e4a801fc3','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.E', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.F', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.G', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.5', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.6', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.7', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.H', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.I', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.J', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
@@ -155,22 +161,26 @@ insert into Administrators values (1);
 select*from CMR_Users
 
 go
-insert into CL values('cl001',2,'comp_1640','01-10-2016');
-insert into CL values('cl002',3,'comp_1649','01-10-2016');
-insert into CL values('cl003',4,'comp_1661','01-10-2016');
+insert into CL values('cl001',2,'comp_1640');
+insert into CL values('cl002',3,'comp_1649');
+insert into CL values('cl003',4,'comp_1661');
+
+insert into CM values('cm001',5,'comp_1640');
+insert into CM values('cm002',6,'comp_1649');
+insert into CM values('cm003',7,'comp_1661');
 
 go
-insert into PVC values (2, 'fac001', '02-10-2016');
-insert into PVC values (3, 'fac002', '02-10-2016');
-insert into PVC values (4, 'fac003', '02-10-2016');
+insert into PVC values (2, 'fac001');
+insert into PVC values (3, 'fac002');
+insert into PVC values (4, 'fac003');
 
 go
-insert into DLT values('DLT_01', 5, 'fac001', '03-10-2016');
-insert into DLT values('DLT_02', 6, 'fac001', '03-10-2016');
-insert into DLT values('DLT_03', 7, 'fac001', '03-10-2016');
-insert into DLT values('DLT_04', 8, 'fac001', '03-10-2016');
-insert into DLT values('DLT_05', 9, 'fac001', '03-10-2016');
-insert into DLT values('DLT_06', 10, 'fac001', '03-10-2016');
+insert into DLT values('DLT_01', 5, 'fac001');
+insert into DLT values('DLT_02', 6, 'fac001');
+insert into DLT values('DLT_03', 7, 'fac001');
+insert into DLT values('DLT_04', 8, 'fac001');
+insert into DLT values('DLT_05', 9, 'fac001');
+insert into DLT values('DLT_06', 10, 'fac001');
 
 go
 insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', 25, 'comments 1', 'Action1');
