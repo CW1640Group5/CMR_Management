@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,14 +20,13 @@
         <!--header -->
         <nav class="navbar navbar-inverse navbar-static-top " role="navigation">
             <div class="container-fluid">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-EV-navbar-collapse-1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-EV-navbar-collapse-1">
+                    
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
 
                 <div class="navbar-header navbar-inverse">
                     <a class="navbar-brand" href="index.html">Group5</a>
@@ -82,7 +82,7 @@
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Student Count</td>
-                                            <td><input type="text" name="txtStudentcount"/></td>
+                                            <td><input type="text" name="txtStudentCount"/></td>
                                         </tr>
                                     </table>
                                 </div>

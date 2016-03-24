@@ -44,7 +44,7 @@ public class CourseDb {
         Connection conn = null;
         try {
             conn = ConnectionUtil.getConnection();
-            CallableStatement cstmt = conn.prepareCall("{call usp_addNewCourse(?,?,?,?)}");
+            CallableStatement cstmt = conn.prepareCall("{call usp_addNewCourse(?,?,?,?,?)}");
 
             cstmt.setString("c_id", id);
             cstmt.setString("c_name", name);

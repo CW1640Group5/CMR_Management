@@ -61,15 +61,12 @@ begin
 	insert into CMR(AcademicSession, Course_id, CL_id, Studentcount) 
 	values (@academicSession, @course_id, @cl_id, @studentCount);
 end
-
-insert into CMR(AcademicSession, Course_id, CL_id, Studentcount) 
-	values ('fgdgdf', 'comp_1661', 'cl001', '34');
-
 go
-exec usp_addNewCMR @academicSession='dfsfds',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
+exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
+go
 select * from CMR;
 
---end
+--end insert new CMR by CL
 
 
 ---CHI Proc abc
