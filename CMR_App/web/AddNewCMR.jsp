@@ -70,11 +70,11 @@
                                         <tr class="active"></tr>
                                         <tr class="success">
                                             <td class="active">Academic Session</td>
-                                            <td><input type="text" name="txtAcademicSession"/></td>
+                                            <td><input type="text" name="txtAcademicSession" value="Academic Session Test"/></td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Course Code + tittle</td>
-                                            <td><input type="text" name="txtCourse_id" value="comp1661"/></td>
+                                            <td><input type="text" name="txtCourse_id" value="comp_1661"/></td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Course Leader</td>
@@ -82,7 +82,7 @@
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Student Count</td>
-                                            <td><input type="text" name="txtStudentCount"/></td>
+                                            <td><input type="text" name="txtStudentCount" value="25"/></td>
                                         </tr>
                                     </table>
                                 </div>

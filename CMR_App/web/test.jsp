@@ -15,13 +15,13 @@
         <h1>Hello World!</h1>
         <form action="cmr" method="post">
             
-            <input type="text" name="txtAcademicSession" class="form-control"/>
+            <input type="text" name="txtAcademicSession" value="testProc" class="form-control"/>
             <br/>
-            <input type="text" name="txtCourse_id" value="comp1661" class="form-control"/>
+            <input type="text" name="txtCourse_id" value="comp_1661" class="form-control"/>
             <br/>
             <input type="text" name="txtCl_id" value="cl001" class="form-control"/>
             <br/>
-            <input type="text" name="txtStudentCount" class="form-control"/>
+            <input type="text" name="txtStudentCount" value="25" class="form-control"/>
             <br/>
             <button name="act" value="btnAddCMR" class="btn btn-default" id="contactbtn">Submit</button>
                 <c:if test="${!empty(msgBlue)}" >

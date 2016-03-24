@@ -6,6 +6,7 @@
 package cmr.servlet;
 
 import cmr.db.CmrDB;
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.emptyType;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +37,7 @@ public class CMRServlet extends HttpServlet {
             addNewCMR(request, response);
             return;
         }
-        request.getRequestDispatcher("test.jsp").forward(request, response);
+        request.getRequestDispatcher("AddNewCMR.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,17 +87,24 @@ public class CMRServlet extends HttpServlet {
         String studentcount = request.getParameter("txtStudentCount");
 //        int studentcount = Integer.parseInt(request.getParameter("txtStudentcount"));
 
-        boolean result = db.addNewCMR(academicSession, course_id, cl_id, studentcount);
-        if (result) {
-            request.setAttribute("msgBlue", "CMR Added");
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/test.jsp");
+        if (academicSession.equals("") || course_id.equals("") || cl_id.equals("")) {
+            request.setAttribute("msgR", "Emty Valid Data. Add New CMR Fail");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
             dispatcher.forward(request, response);
             return;
         } else {
-            request.setAttribute("msgR", "Add CMR Fail");
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/test.jsp");
-            dispatcher.forward(request, response);
-            return;
+            boolean result = db.addNewCMR(academicSession, course_id, cl_id, studentcount);
+            if (result) {
+                request.setAttribute("msgBlue", "CMR Added");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+                dispatcher.forward(request, response);
+                return;
+            } else {
+                request.setAttribute("msgR", "Add CMR Fail");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
         }
     }
 
