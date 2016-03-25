@@ -5,8 +5,10 @@
  */
 package cmr.servlet;
 
+import cmr.db.AssignDB;
 import cmr.db.CourseDb;
 import cmr.entity.Course;
+import cmr.entity.assign;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -35,17 +37,37 @@ public class AssignCourseServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = this.getServletContext().getInitParameter("DB_URL");
+        String user = this.getServletContext().getInitParameter("DB_USER");
+        String pass = this.getServletContext().getInitParameter("DB_PASS");
+
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("act");
-        String courseName = request.getParameter("cbCourseName");
-        if (action != null && action.equals("btnAssignCourse")) {
-            CourseDb db = new CourseDb();
-            db.getCourseName();
-//            request.setAttribute("listOfCourse", listOfAllCourseName);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAssign.jsp");
-            dispatcher.forward(request, response);
-            return;
+
+        if (action != null) {
+            AssignDB asDB = new AssignDB();
+            String CourseId = request.getParameter("CourseId");
+            String CL_id = request.getParameter("CL_id");
+            String CM_id = request.getParameter("CM_id");
+            String start_time = request.getParameter("start_time");
+            String end_time = request.getParameter("end_time");
+            assign as = new assign(CourseId, CL_id, CM_id, start_time, end_time);
+            boolean result = asDB.insertAssign(CourseId, CM_id, CM_id, start_time, end_time);
+            if (result) {
+                request.setAttribute("msg", "done creating news");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                request.setAttribute("msg", "Error creating news");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+                dispatcher.forward(request, response);
+            }
         }
-        request.getRequestDispatcher("AdminAssign.jsp").forward(request, response);
+        AssignDB ad = new AssignDB();
+        List<assign> listAss = ad.getAllAssigned();
+        request.setAttribute("listAss", listAss);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
