@@ -44,9 +44,16 @@ public class AssignCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("act");
 
-        if (action != null) {
+      if (action != null) {
+          
+            AssignDB ad = new AssignDB();
+        List<assign> listAss = ad.getAllAssigned();
+        request.setAttribute("listAss", listAss);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+        dispatcher.forward(request, response);
+        }else if (action .equals("add")) {
             AssignDB asDB = new AssignDB();
-            String CourseId = request.getParameter("CourseId");
+                String CourseId = request.getParameter("CourseId");
             String CL_id = request.getParameter("CL_id");
             String CM_id = request.getParameter("CM_id");
             String start_time = request.getParameter("start_time");
@@ -63,12 +70,11 @@ public class AssignCourseServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         }
-        AssignDB ad = new AssignDB();
-        List<assign> listAss = ad.getAllAssigned();
-        request.setAttribute("listAss", listAss);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
-        dispatcher.forward(request, response);
+        
+    
     }
+       
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

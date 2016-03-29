@@ -122,6 +122,18 @@ create table GradeDistributionData(
 	grade float,
 	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id)
 );
+drop table assignCourse
+create table assignCourse(
+	asId int primary key identity,
+	Course_id nvarchar(20),
+	CL_id nvarchar(20),
+	CM_id nvarchar (20),
+	start_time nvarchar(30),
+	end_time nvarchar(30),
+	foreign key (CL_id) references CL(CL_id),
+	foreign key (CM_id) references CM(CM_id),
+	foreign key (Course_id)references Course(Course_id)
+)
 
 
   

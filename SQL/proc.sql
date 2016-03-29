@@ -67,7 +67,21 @@ go
 select * from CMR;
 
 --end insert new CMR by CL
+drop procedure usp_assignCourse
+go
+create procedure usp_assignCourse
+@Course_id nvarchar(20),
+@CL_id nvarchar(20),
+@CM_id nvarchar (20),
+@start_time nvarchar (30),
+@end_time nvarchar (30)
+as 
+begin 
+insert into assignCourse values(@Course_id,@CL_id,@CM_id,@start_time,@end_time)
+end
+go
 
+exec usp_assignCourse @Course_id='comp_1649',@CL_id='cl002', @CM_id='cm001',@start_time='2/1/2012',@end_time='3/2/2013'
 
 ---CHI Proc abc
 select DISTINCT Course.Course_id,Course.COURSE_NAME,Course.START_TIME,Course.END_TIME from Course,CL where CL.CL_ID='cl001'

@@ -26,7 +26,7 @@
     </servlet>
      <servlet>
         <servlet-name>AssignCourse</servlet-name>
-        <servlet-class>cmr.servlet.AssignCourse</servlet-class>
+        <servlet-class>cmr.servlet.AssignCourseServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CourseServlet</servlet-name>
