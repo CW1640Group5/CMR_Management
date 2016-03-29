@@ -56,12 +56,11 @@ public class AssignCourseServlet extends HttpServlet {
             String CourseId = request.getParameter("Course_id");
             String CL_id = request.getParameter("CL_id");
             String CM_id = request.getParameter("CM_id");
-           
             assign as = new assign(CourseId, CL_id, CM_id);
-            boolean result = asDB.insertAssign(CourseId, CM_id, CM_id);
+            boolean result = asDB.insertAssign(as);
             if (result) {
                 request.setAttribute("msg", "done creating news");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
                 dispatcher.forward(request, response);
             } else {
                 request.setAttribute("msg", "Error creating news");

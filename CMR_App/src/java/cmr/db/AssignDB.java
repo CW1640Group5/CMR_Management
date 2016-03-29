@@ -52,15 +52,15 @@ public class AssignDB {
         }
         return listAs;
     }
-    public boolean insertAssign(String courseId,String cl_id,String cm_id){
+    public boolean insertAssign(assign a){
         Connection conn=null;
         try {
              conn=ConnectionUtil.getConnection();
             CallableStatement cs=conn.prepareCall("{call usp_assignCourse(?,?,?)}");
     
-            cs.setString(1, courseId);
-            cs.setString(2, cl_id);
-            cs.setString(3, cm_id);
+            cs.setString(1, a.getCourseID());
+            cs.setString(2, a.getCl_id());
+            cs.setString(3, a.getCm_id());
         
             int result=cs.executeUpdate();
             if(result>0){
