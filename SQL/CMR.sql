@@ -63,11 +63,15 @@ CREATE TABLE faculty
   (
     faculty_id   nvarchar(20) PRIMARY KEY,
     faculty_name nvarchar(100),
-    Course_id    nvarchar(20),
     class_id     nvarchar(20),
-    start_time   nvarchar(30),
-    end_time     nvarchar(30),
-    FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
+    Years   nvarchar(30)
+  );
+  go
+  CREATE TABLE CourseAssignByFac
+  (
+	id int primary key identity(1,1),
+	Course_id nvarchar(20),
+	faculty_id nvarchar(20)
   );
   go
 CREATE TABLE PVC
@@ -129,9 +133,9 @@ insert into Course(Course_id, Course_name, Description, start_time, end_time) va
 insert into Course(Course_id, Course_name, Description, start_time, end_time) values('comp_1661','Application Development for Mobile Devices','description','01-10-2016','04-15-2016');
 
 go
-insert into faculty values ('fac001', 'Nguyen Thuy Duong', 'comp_1640', 'B14', '01-10-2016', '01-10-2017');
-insert into faculty values ('fac002', 'Jaya', 'comp_1649', 'B14', '01-10-2016', '01-10-2017');
-insert into faculty values ('fac003', 'Ngo Tung Son', 'comp_1661', 'B14', '01-10-2016', '01-10-2017');
+insert into faculty values ('fac001', 'Nguyen Thuy Duong', 'B14', '2015-2016');
+insert into faculty values ('fac002', 'Jaya', 'B14', '2015-2016');
+insert into faculty values ('fac003', 'Ngo Tung Son', 'B14', '2015-2016');
 
 go
 insert into Role values
