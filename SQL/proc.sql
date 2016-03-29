@@ -24,7 +24,7 @@ create procedure usp_addNewCourse
 @end_time nvarchar(30)
 as
 begin
-	insert into Course values(@c_id,@c_name,@description,@start_time,@end_time);
+	insert into Course(Course_id, Course_name, Description, start_time, end_time) values(@c_id,@c_name,@description,@start_time,@end_time);
 end
 go
 select * from Course;
@@ -40,10 +40,10 @@ create procedure usp_Login
 	@uPassword varchar(50)
 as
 Begin
-	select User_id, User_name, mail from CMR_Users where User_name = @user_name and uPassword = @uPassword
+	select User_id, User_name, mail, Role_id from CMR_Users where User_name = @user_name and uPassword = @uPassword
 end
 
-select User_id, User_name, mail from CMR_Users where User_name = 'admin' and uPassword = '21232f297a57a5a743894a0e4a801fc3'
+exec usp_Login @user_name = 'admin', @uPassword = '21232f297a57a5a743894a0e4a801fc3';
 
 --end login
 
