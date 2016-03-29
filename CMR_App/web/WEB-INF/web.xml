@@ -25,7 +25,7 @@
         <servlet-class>cmr.servlet.CMR_UsersServlet</servlet-class>
     </servlet>
      <servlet>
-        <servlet-name>AssignCourse</servlet-name>
+        <servlet-name>AssignCourseServlet</servlet-name>
         <servlet-class>cmr.servlet.AssignCourseServlet</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -41,7 +41,7 @@
         <url-pattern>/cmr_users</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AssignCourse</servlet-name>
+        <servlet-name>AssignCourseServlet</servlet-name>
         <url-pattern>/assign</url-pattern>
     </servlet-mapping>
     <session-config>
@@ -50,6 +50,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>AdminAssign.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

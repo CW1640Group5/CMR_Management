@@ -46,12 +46,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Assign to Course leader</div>
                 <div class="panel-body">
-                    <form action="/assign?act=add" method="post">
+                    <form action="${pageContext.request.contextPath}/assign?act=add" method="post">
                         <div class="form-group">
                             <label for="id">Course Name</label>
-                            <select name="CourseId" class="form-control">
+                            <select name="Course_id" class="form-control">
                                  <c:forEach items="${listAss}" var="n">
-                                     <option name="abc">${n.getCourseID()}</option>
+                                     <option value="${n.getCourseID()}">${n.getCourseID()}</option>
                                 </c:forEach>
                             </select>           
                         </div>
@@ -59,35 +59,20 @@
                             <label for="Name">Course Leader</label>
                             <select name="CL_id" class="form-control">
                                 <c:forEach items="${listAss}" var="m">
-                                    <option>${m.getCl_id()}</option>
+                                    <option value="${m.getCl_id()}">${m.getCl_id()}</option>
                                 </c:forEach>
                             </select>
                         </div>
                        <div class="form-group">
-                            <label for="startTime">Start Time</label>
+                            <label for="name">Course Master</label>
                             <select name="CM_id" class="form-control">
                                 <c:forEach items="${listAss}" var="m">
-                                    <option>${m.getCm_id()}</option>
+                                    <option value="${m.getCm_id()}">${m.getCm_id()}</option>
                                 </c:forEach>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="startTime">Start Time</label>
-                            <select name="start_time" class="form-control">
-                                <c:forEach items="${listAss}" var="m">
-                                    <option>${m.getStart_time()}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="endTime">End Time</label>
-                           <select  name="end_time"class="form-control">
-                                <c:forEach items="${listAss}" var="m">
-                                    <option>${m.getEnd_time()}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <button name="add" value="btnAdd" class="btn btn-default" id="contactbtn">Submit</button>
+                       
+                        <input type="submit" name="add" value="add" class="btn btn-default" id="contactbtn"/>
                         <br/>
                         <c:if test="${!empty(msgBlue)}" >
                             <p style="color:blue;">${msgBlue}</p>

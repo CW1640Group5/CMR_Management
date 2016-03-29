@@ -32,32 +32,34 @@ CREATE TABLE Administrators
     FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id)
   );
  go
- CREATE TABLE CL
-  (
-    CL_id       nvarchar(20) primary key,
-    User_id     INT,
-    FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id)
-  );
-  go
-  CREATE TABLE CM
-  (
-    CM_id       nvarchar(20) primary key,
-    User_id     INT,
-    FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
-  );
-  go
-CREATE TABLE Course
+ CREATE TABLE Course
   (
     Course_id   nvarchar(20) PRIMARY KEY,
     Course_name nvarchar(100),
 	Description nvarchar(max),
     start_time  nvarchar(30),
     end_time    nvarchar(30),
-	CL_id		nvarchar(20),
-	CM_id       nvarchar(20),
-	FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
-	FOREIGN KEY (CM_id) REFERENCES CM(CM_id)
+	
   );
+ CREATE TABLE CL
+  (
+     CL_id       nvarchar(20) primary key,
+    User_id     INT,
+    Course_id   nvarchar(20),
+    FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
+    FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
+  );
+  go
+  CREATE TABLE CM
+  (
+ CM_id       nvarchar(20) primary key,
+    User_id     INT,
+    Course_id   nvarchar(20),
+    FOREIGN KEY (User_id) REFERENCES CMR_Users(User_id),
+    FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
+  );
+  go
+
   go
 CREATE TABLE faculty
   (
@@ -71,7 +73,9 @@ CREATE TABLE faculty
   (
 	id int primary key identity(1,1),
 	Course_id nvarchar(20),
-	faculty_id nvarchar(20)
+	faculty_id nvarchar(20),
+	foreign key (faculty_id) references faculty(faculty_id),
+	 FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
   go
 CREATE TABLE PVC
@@ -122,14 +126,12 @@ create table GradeDistributionData(
 	grade float,
 	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id)
 );
-drop table assignCourse
+
 create table assignCourse(
 	asId int primary key identity,
 	Course_id nvarchar(20),
 	CL_id nvarchar(20),
-	CM_id nvarchar (20),
-	start_time nvarchar(30),
-	end_time nvarchar(30),
+	CM_id nvarchar (20),	
 	foreign key (CL_id) references CL(CL_id),
 	foreign key (CM_id) references CM(CM_id),
 	foreign key (Course_id)references Course(Course_id)
@@ -140,30 +142,28 @@ create table assignCourse(
 
 --INSERT DATABASE HERE
 go
-insert into Course(Course_id, Course_name, Description, start_time, end_time) values('comp_1640','Enterprise Web Software','description','01-10-2016','04-14-2016');
-insert into Course(Course_id, Course_name, Description, start_time, end_time) values('comp_1649','interaction design','description','01-10-2016','04-28-2016');
-insert into Course(Course_id, Course_name, Description, start_time, end_time) values('comp_1661','Application Development for Mobile Devices','description','01-10-2016','04-15-2016');
-
+insert into Course values('comp_1640','Enterprise Web Software','description','01-10-2016','04-14-2016');
+insert into Course values('comp_1649','interaction design','description','01-10-2016','04-28-2016');
+insert into Course values('comp_1661','Application Development for Mobile Devices','description','01-10-2016','04-15-2016');
+select * from faculty
 go
-insert into faculty values ('fac001', 'Nguyen Thuy Duong', 'B14', '2015-2016');
-insert into faculty values ('fac002', 'Jaya', 'B14', '2015-2016');
-insert into faculty values ('fac003', 'Ngo Tung Son', 'B14', '2015-2016');
-
+insert into faculty values ('fac001', 'Nguyen Thuy Duong', 'comp_1640', 'B14');
+insert into faculty values ('fac002', 'Jaya', 'comp_1649', 'B14');
+insert into faculty values ('fac003', 'Ngo Tung Son', 'comp_1661', 'B14');
 go
 insert into Role values
 ('Admin'), 
 ('Course Leader'), 
-('CM'),
-('DLT');
+('role_type_3');
 
 go
 insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
-('Admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),--admin
-('Pham Thuy Duong', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),--CL
-('Jaya', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),--CL
-('Ngo Tung Son', '21232f297a57a5a743894a0e4a801fc3','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),--CL
-('CM', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),--CM
-('DLT', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),--DLT
+('Admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Nguyen Thuy Duong', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Jaya', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Ngo Tung Son', '21232f297a57a5a743894a0e4a801fc3','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.5', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Mr.6', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.7', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.H', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.I', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
@@ -178,13 +178,13 @@ insert into Administrators values (1);
 select*from CMR_Users
 
 go
-insert into CL values('cl001',2);
-insert into CL values('cl002',3);
-insert into CL values('cl003',4);
+insert into CL values('cl001',2,'comp_1640');
+insert into CL values('cl002',3,'comp_1649');
+insert into CL values('cl003',4,'comp_1661');
 
-insert into CM values('cm001',5);
-insert into CM values('cm002',6);
-insert into CM values('cm003',7);
+insert into CM values('cm001',5,'comp_1640');
+insert into CM values('cm002',6,'comp_1649');
+insert into CM values('cm003',7,'comp_1661');
 
 go
 insert into PVC values (2, 'fac001');
@@ -204,4 +204,12 @@ insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '2
 insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2');
 insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3');
 
+
+  go
+  insert into assignCourse values('comp_1640','cl001','cm001')
+  insert into assignCourse values('comp_1649','cl002','cm002')
+  insert into assignCourse values('comp_1661','cl003','cm003')
+
+  select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
+ select * from assignCourse
 --END INSERT DATABASE
