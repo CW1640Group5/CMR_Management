@@ -5,9 +5,8 @@
  */
 package cmr.servlet;
 
-import cmr.db.CmrDB;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen
  */
-public class CMRServlet extends HttpServlet {
+public class ShowCMRServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,12 +30,7 @@ public class CMRServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("act");
-        if (action != null && action.equals("btnAddCMR")) {
-            addNewCMR(request, response);
-            return;
-        }
-        request.getRequestDispatcher("AddNewCMR.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,34 +71,5 @@ public class CMRServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void addNewCMR(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CmrDB db = new CmrDB();
-        String academicSession = request.getParameter("txtAcademicSession");
-        String course_id = request.getParameter("txtCourse_id");
-        String cl_id = request.getParameter("txtCl_id");
-        String studentcount = request.getParameter("txtStudentCount");
-//        int studentcount = Integer.parseInt(request.getParameter("txtStudentcount"));
-
-        if (academicSession.equals("") || course_id.equals("") || cl_id.equals("")) {
-            request.setAttribute("msgR", "Emty Valid Data. Add New CMR Fail");
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
-            dispatcher.forward(request, response);
-            return;
-        } else {
-            boolean result = db.addNewCMR(academicSession, course_id, cl_id, studentcount);
-            if (result) {
-                request.setAttribute("msgBlue", "CMR Added");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
-                dispatcher.forward(request, response);
-                return;
-            } else {
-                request.setAttribute("msgR", "Add CMR Fail");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
-                dispatcher.forward(request, response);
-                return;
-            }
-        }
-    }
 
 }

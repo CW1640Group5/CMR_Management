@@ -50,6 +50,7 @@ public class CMR_UsersDb {
                 cmrUser.setUserID(rs.getInt("User_id"));
                 cmrUser.setUserName(rs.getString("User_name"));
                 cmrUser.setMail(rs.getString("mail"));
+                cmrUser.setRoleID(rs.getInt("Role_id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(CMR_Users.class.getName()).log(Level.SEVERE, null, ex);

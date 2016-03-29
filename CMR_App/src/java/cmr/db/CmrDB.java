@@ -18,11 +18,11 @@ import java.util.logging.Logger;
  */
 public class CmrDB {
 
+    
+    
     public boolean addNewCMR(String academicSession, String course_id, String cl_id, String studentCount) {
         Connection conn = null;
         try {
-//            String query = "insert into CMR(AcademicSession, Course_id, CL_id, Studentcount) \n"
-//                    + "values ('" + academicSession + "', '" + course_id + "', '" + cl_id + "', '" + studentCount + "');";
             conn = ConnectionUtil.getConnection();
             CallableStatement cstmt = conn.prepareCall("{call usp_addNewCMR(?,?,?,?)}");
 
@@ -30,9 +30,6 @@ public class CmrDB {
             cstmt.setString("course_id", course_id);
             cstmt.setString("cl_id", cl_id);
             cstmt.setString("studentCount", studentCount);
-
-//            Statement stm = conn.createStatement();
-//            int result = stm.executeUpdate(query);
             int result = cstmt.executeUpdate();
             if (result > 0) {
                 return true;
