@@ -154,17 +154,19 @@ go
 insert into Role values
 ('Admin'), 
 ('Course Leader'), 
-('role_type_3');
+('CM'),
+('DLT'),
+('PVC');
 
 go
 insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
-('Admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Nguyen Thuy Duong', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Jaya', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('Admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',1,'asadsda','0123456789','sdaas@asd.com'),
+('Nguyen Thuy Duong', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','hanvgc00472@fpt.edu.vn'),
+('Jaya', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789',''),
 ('Ngo Tung Son', '21232f297a57a5a743894a0e4a801fc3','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.5', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.6', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.7', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('CL', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('CM', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),
+('DLT', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',4,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.H', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.I', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.J', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
@@ -173,7 +175,7 @@ insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phon
 ('Mr.M', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.N', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
 insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
-('chi','21232f297a57a5a743894a0e4a801fc3','M','08-12-1994',2,'asdasda','0123456789','chibvhgc00544@fpt.edu.vn');
+('chi','21232f297a57a5a743894a0e4a801fc3','M','08-12-1994',4,'asdasda','0123456789','chibvhgc00544@fpt.edu.vn');
  
 go
 insert into Administrators values (1);
