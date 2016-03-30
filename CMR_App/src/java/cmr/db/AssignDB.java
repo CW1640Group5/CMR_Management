@@ -30,14 +30,13 @@ public class AssignDB {
         try {
             conn=ConnectionUtil.getConnection();
             Statement cstm=conn.createStatement();
-            ResultSet rs=cstm.executeQuery("select * from assignCourse");
+            ResultSet rs=cstm.executeQuery("select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id");
             while (rs.next()){
             String courseId=rs.getString("Course_id");
              String CL_id=rs.getString("CL_id");
               String CM_id=rs.getString("CM_id");
-               String start_time=rs.getString("start_time");
-                String end_time=rs.getString("end_time");
-              listAs.add(new assign(courseId, CL_id, CM_id, start_time, end_time));
+              
+              listAs.add(new assign(courseId, CL_id, CM_id));
             }
             return listAs;
         } catch (SQLException ex) {
@@ -53,17 +52,16 @@ public class AssignDB {
         }
         return listAs;
     }
-    public boolean insertAssign(String courseId,String cl_id,String cm_id,String start_time,String end_time){
+    public boolean insertAssign(assign a){
         Connection conn=null;
         try {
              conn=ConnectionUtil.getConnection();
-            CallableStatement cs=conn.prepareCall("{call usp_assignCourse(?,?,?,?,?)}");
+            CallableStatement cs=conn.prepareCall("{call usp_assignCourse(?,?,?)}");
     
-            cs.setString("Course_id", courseId);
-            cs.setString("CL_id", cl_id);
-            cs.setString("CM_id", cm_id);
-            cs.setString("start_time", start_time);
-            cs.setString("end_time", end_time);
+            cs.setString(1, a.getCourseID());
+            cs.setString(2, a.getCl_id());
+            cs.setString(3, a.getCm_id());
+        
             int result=cs.executeUpdate();
             if(result>0){
                 return true;

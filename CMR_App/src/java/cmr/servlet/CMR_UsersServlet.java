@@ -100,37 +100,35 @@ public class CMR_UsersServlet extends HttpServlet {
         String userName = request.getParameter("txtUserName");
         String password = request.getParameter("txtPassword");
         if (!userName.equals("") && !password.equals("")) {
-            CMR_Users cmrUsers = new CMR_Users(userName, password);
-            db.login(cmrUsers);
-            if (cmrUsers.getUserName() != null) {
-                if (cmrUsers.getRoleID() == 1) {
-//                        db.SessionId(session.getId(), email); problem?
+            if (userName.equals("admin")) {
+                CMR_Users cmrUsers = new CMR_Users(userName, password);
+                db.login(cmrUsers);
+                if (cmrUsers.getUserName() != null) {
+//                db.SessionId(session.getId(), email); problem?
                     session.setAttribute("cmrUsers", cmrUsers);
                     Cookie cookie = new Cookie("txtUserName", userName);
                     response.addCookie(cookie);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/course");
                     dispatcher.forward(request, response);
-                } else if (cmrUsers.getRoleID() == 2) {
-//                        db.SessionId(session.getId(), email); problem?
-                    session.setAttribute("cmrUsers", cmrUsers);
-                    Cookie cookie = new Cookie("txtUserName", userName);
-                    response.addCookie(cookie);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/showCLCourse");
-                    dispatcher.forward(request, response);
-                } else if (cmrUsers.getRoleID() == 3) {
-//                        db.SessionId(session.getId(), email); problem?
+                } else {
+                    request.setAttribute("msg", "Login fail");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            } else {
+                CMR_Users cmrUsers = new CMR_Users(userName, password);
+                db.login(cmrUsers);
+                if (cmrUsers.getUserName() != null) {
+//                    db.SessionId(session.getId(), email); problem?
                     session.setAttribute("cmrUsers", cmrUsers);
                     Cookie cookie = new Cookie("txtUserName", userName);
                     response.addCookie(cookie);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/cmr");
                     dispatcher.forward(request, response);
+                } else {
+                    request.setAttribute("msg", "Login fail");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
-
-            } else {
-                request.setAttribute("msg", "Login fail");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-//            }
 
         } else {
             request.setAttribute("msg", "Enter your user name or password again!");

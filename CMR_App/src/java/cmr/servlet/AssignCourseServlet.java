@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,30 +45,31 @@ public class AssignCourseServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("act");
 
-        if (action != null) {
+        if (action == null) {
+            AssignDB ad = new AssignDB();
+            List<assign> listAss = ad.getAllAssigned();
+            request.setAttribute("listAss", listAss);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+            dispatcher.forward(request, response);
+        } else if (action.equals("add")) {
             AssignDB asDB = new AssignDB();
-            String CourseId = request.getParameter("CourseId");
+            String CourseId = request.getParameter("Course_id");
             String CL_id = request.getParameter("CL_id");
             String CM_id = request.getParameter("CM_id");
-            String start_time = request.getParameter("start_time");
-            String end_time = request.getParameter("end_time");
-            assign as = new assign(CourseId, CL_id, CM_id, start_time, end_time);
-            boolean result = asDB.insertAssign(CourseId, CM_id, CM_id, start_time, end_time);
+            assign as = new assign(CourseId, CL_id, CM_id);
+            boolean result = asDB.insertAssign(as);
             if (result) {
                 request.setAttribute("msg", "done creating news");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
                 dispatcher.forward(request, response);
             } else {
                 request.setAttribute("msg", "Error creating news");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
+                ServletContext context= getServletContext();
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
                 dispatcher.forward(request, response);
             }
         }
-        AssignDB ad = new AssignDB();
-        List<assign> listAss = ad.getAllAssigned();
-        request.setAttribute("listAss", listAss);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
-        dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

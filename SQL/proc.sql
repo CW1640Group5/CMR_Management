@@ -67,8 +67,34 @@ go
 select * from CMR;
 
 --end insert new CMR by CL
+drop procedure usp_assignCourse
+go
+create procedure usp_assignCourse
+@Course_id nvarchar(20),
+@CL_id nvarchar(20),
+@CM_id nvarchar (20)
+as 
+begin 
+insert into assignCourse values(@Course_id,@CL_id,@CM_id)
+end
+go
 
+select * from assignCourse
+
+exec usp_assignCourse @Course_id='comp_1649',@CL_id='cl002', @CM_id='cm001'
 
 ---CHI Proc abc
 select DISTINCT Course.Course_id,Course.COURSE_NAME,Course.START_TIME,Course.END_TIME from Course,CL where CL.CL_ID='cl001'
+
+drop procedure usp_getMail
+go
+create procedure usp_getMail 
+@Course_id nvarchar(20)
+as
+begin
+select CMR_Users.mail from CourseAssignByFac,DLT,CMR_Users where CourseAssignByFac.Course_id=@Course_id and CourseAssignByFac.faculty_id=DLT.faculty_id 
+and DLT.User_id=CMR_Users.User_id
+end
+
+exec usp_getMail @Course_id='comp_1649'
 --end
