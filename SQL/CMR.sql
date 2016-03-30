@@ -109,22 +109,39 @@ CREATE TABLE CMR
 	FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
-
-Create table StatisticalData(
+go
+create table C_Data
+(
+	ID int primary key identity(1, 1),
+	cwName varchar (10)
+	--CW1 varchar(10),
+	--CW2 varchar(10),
+	--Exam varchar(10),
+	--Overall varchar(10),
+);
+go
+Create table StatisticalData
+(
 	id INT PRIMARY KEY identity,
 	CMR_id INT,
-	DataName varchar(10),
+	cwDataID int,
 	Mean text,
 	Median text,
 	StandardDeviation text,
-	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id)
+	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id),
+	FOREIGN KEY (cwDataID) REFERENCES C_Data(ID)
 );
-
+go
 create table GradeDistributionData(
 	id INT PRIMARY KEY identity,
-	CMR_id INT,
-	grade float,
-	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id)
+	CMR_id INT,	
+	cwDataID int,
+	[0-39] float,
+	[40-69] float,
+	[70-89] float,
+	[90+] float,
+	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id),
+	FOREIGN KEY (cwDataID) REFERENCES C_Data(ID)
 );
 
 create table assignCourse(
@@ -207,16 +224,20 @@ insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '2
 insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2');
 insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3');
 
+go
+insert into C_Data
+values ('CW1'), ('CW2'), ('Exam'), ('Overall');
+select * from C_Data
 
-  go
-  insert into assignCourse values('comp_1640','cl001','cm001')
-  insert into assignCourse values('comp_1649','cl002','cm002')
-  insert into assignCourse values('comp_1661','cl003','cm003')
+go
+insert into assignCourse values('comp_1640','cl001','cm001')
+insert into assignCourse values('comp_1649','cl002','cm002')
+insert into assignCourse values('comp_1661','cl003','cm003')
 
-  insert into CourseAssignByFac values('comp_1640','fac001');
-  insert into CourseAssignByFac values('comp_1649','fac001');
-  insert into CourseAssignByFac values('comp_1661','fac001');
+insert into CourseAssignByFac values('comp_1640','fac001');
+insert into CourseAssignByFac values('comp_1649','fac001');
+insert into CourseAssignByFac values('comp_1661','fac001');
 
-  select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
- select * from assignCourse
+select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
+select * from assignCourse
 --END INSERT DATABASE

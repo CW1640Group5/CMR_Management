@@ -63,10 +63,61 @@ begin
 end
 go
 exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
+
 go
-select * from CMR;
+drop procedure usp_addStatisticalData
+go
+create procedure usp_addStatisticalData
+	@cwDataID int,
+	@mean text,
+	@median text,
+	@standardDeviation text
+	--CW1 varchar(10),
+	--CW2 varchar(10),
+	--Exam varchar(10),
+	--Overall varchar(10),
+as
+begin
+	Declare @lastIDInCMR int = (SELECT TOP 1 (CMR_id) AS ID FROM CMR ORDER BY CMR_id DESC);
+	insert into StatisticalData 
+	values (@lastIDInCMR, @cwDataID, @mean, @median, @standardDeviation);
+end
+go
+exec usp_addStatisticalData @cwDataID = '1', @mean = '56', @median = '80', @standardDeviation = 'jrj';
+
+go
+drop procedure usp_addGrDistriData
+go
+create procedure usp_addGrDistriData	
+	@cwDataID int,
+	@0_39 float,
+	@40_69 float,
+	@70_89 float,
+	@90plus float
+as
+begin
+	Declare @CMR_id int = (SELECT TOP 1 (CMR_id) AS ID FROM CMR ORDER BY CMR_id DESC);
+	insert into GradeDistributionData 
+	values (@CMR_id, @cwDataID, @0_39, @40_69, @70_89, @90plus);
+end
+go
+exec usp_addGrDistriData @cwDataID = '1', @0_39 = '23', @40_69 = '55', @70_89 = '55', @90plus = '66';
+go
+drop procedure selectAll;
+go
+create procedure selectAll
+as
+begin
+	select * from CMR;
+	select * from StatisticalData;
+	select * from GradeDistributionData;
+end
+go
+exec selectAll;
 
 --end insert new CMR by CL
+
+
 drop procedure usp_assignCourse
 go
 create procedure usp_assignCourse
