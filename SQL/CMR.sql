@@ -160,7 +160,7 @@ insert into Role values
 
 go
 insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
-('Admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',1,'asadsda','0123456789','sdaas@asd.com'),
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',1,'asadsda','0123456789','sdaas@asd.com'),
 ('Ha', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','hanvgc00472@fpt.edu.vn'),
 ('Giap', '21232f297a57a5a743894a0e4a801fc3','F','01-10-1990',2,'asadsda','0123456789','giapnhgc00561@fpt.edu.vn'),
 ('Ngo Tung Son', '21232f297a57a5a743894a0e4a801fc3','M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),

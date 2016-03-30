@@ -40,10 +40,10 @@ create procedure usp_Login
 	@uPassword varchar(50)
 as
 Begin
-	select User_id, User_name, mail, Role_id from CMR_Users where User_name = @user_name and uPassword = @uPassword
+	select User_id, User_name, mail, Role_id from CMR_Users where User_name = @user_name and uPassword = @uPassword;
 end
-
-exec usp_Login @user_name = 'admin', @uPassword = '21232f297a57a5a743894a0e4a801fc3';
+go
+exec usp_Login @user_name = 'admin', @uPassword = '21232f297a57a5a743894a0e4a801fc3'
 
 --end login
 
@@ -85,7 +85,7 @@ exec usp_assignCourse @Course_id='comp_1649',@CL_id='cl002', @CM_id='cm001'
 
 ---CHI Proc abc
 select DISTINCT Course.Course_id,Course.COURSE_NAME,Course.START_TIME,Course.END_TIME from Course,CL where CL.CL_ID='cl001'
-
+go
 drop procedure usp_getMail
 go
 create procedure usp_getMail 
@@ -95,6 +95,6 @@ begin
 select CMR_Users.mail from CourseAssignByFac,DLT,CMR_Users where CourseAssignByFac.Course_id=@Course_id and CourseAssignByFac.faculty_id=DLT.faculty_id 
 and DLT.User_id=CMR_Users.User_id
 end
-
+go
 exec usp_getMail @Course_id='comp_1649'
 --end

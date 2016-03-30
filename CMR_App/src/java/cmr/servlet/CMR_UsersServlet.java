@@ -110,15 +110,16 @@ public class CMR_UsersServlet extends HttpServlet {
                     response.addCookie(cookie);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/course");
                     dispatcher.forward(request, response);
-                } else if(cmrUsers.getRoleID() == 2){
+                } else if (cmrUsers.getRoleID() == 2) {
                     //                db.SessionId(session.getId(), email); problem?
                     session.setAttribute("cmrUsers", cmrUsers);
                     Cookie cookie = new Cookie("txtUserName", userName);
                     response.addCookie(cookie);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/cmr");
                     dispatcher.forward(request, response);
-                } else{
-                    
+                } else {
+                    request.setAttribute("msg", "Login fail");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
 
             } else {
