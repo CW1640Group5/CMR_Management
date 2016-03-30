@@ -172,6 +172,8 @@ insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phon
 ('Mr.L', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.M', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.N', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
+insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
+('chi','21232f297a57a5a743894a0e4a801fc3','M','08-12-1994',2,'asdasda','0123456789','chibvhgc00544@fpt.edu.vn');
  
 go
 insert into Administrators values (1);
@@ -191,13 +193,12 @@ insert into PVC values (2, 'fac001');
 insert into PVC values (3, 'fac002');
 insert into PVC values (4, 'fac003');
 
+
 go
-insert into DLT values('DLT_01', 5, 'fac001');
-insert into DLT values('DLT_02', 6, 'fac001');
-insert into DLT values('DLT_03', 7, 'fac001');
-insert into DLT values('DLT_04', 8, 'fac001');
-insert into DLT values('DLT_05', 9, 'fac001');
-insert into DLT values('DLT_06', 10, 'fac001');
+
+insert into DLT values('DLT_01', 15, 'fac001');
+insert into DLT values('DLT_02', 2, 'fac002');
+insert into DLT values('DLT_03', 3, 'fac003');
 
 go
 insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '25', 'comments 1', 'Action1');
@@ -209,6 +210,10 @@ insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '2
   insert into assignCourse values('comp_1640','cl001','cm001')
   insert into assignCourse values('comp_1649','cl002','cm002')
   insert into assignCourse values('comp_1661','cl003','cm003')
+
+  insert into CourseAssignByFac values('comp_1640','fac001');
+  insert into CourseAssignByFac values('comp_1649','fac001');
+  insert into CourseAssignByFac values('comp_1661','fac001');
 
   select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
  select * from assignCourse

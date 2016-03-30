@@ -7,6 +7,7 @@ package cmr.db;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -43,5 +44,25 @@ public class CmrDB {
             ConnectionUtil.closeConnection(conn);
         }
         return false;
+    }
+    
+    public String getEmail(String course_id){
+        Connection conn = null;
+        String mail=null;
+        try {
+            conn = ConnectionUtil.getConnection();
+            CallableStatement cstmt = conn.prepareCall("{call usp_getMail(?)}");
+            cstmt.setString("Course_id", course_id);
+            ResultSet rs=cstmt.executeQuery();
+            while (rs.next()) {                
+                mail=rs.getString(1);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CmrDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionUtil.closeConnection(conn);
+        }
+        return mail;
     }
 }
