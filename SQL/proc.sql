@@ -78,8 +78,8 @@ begin
 insert into assignCourse values(@Course_id,@CL_id,@CM_id)
 end
 go
-
 select * from assignCourse
+
 
 exec usp_assignCourse @Course_id='comp_1649',@CL_id='cl002', @CM_id='cm001'
 
