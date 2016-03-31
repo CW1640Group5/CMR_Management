@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <input type="text" name="txtDescription" class="form-control" id="name" placeholder="Description" value="Description">
+                                <textarea name="txtDescription" class="form-control" id="name" placeholder="Description" value="Description"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="startTime">Start Time</label>
