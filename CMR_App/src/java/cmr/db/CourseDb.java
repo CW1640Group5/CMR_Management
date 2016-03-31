@@ -21,26 +21,9 @@ import java.util.logging.Logger;
  * @author Nguyen
  */
 public class CourseDb {
-    
-    public void getCourseName() {
-        List<Course> listCourseName = new ArrayList<>();
-        Connection conn = null;
-        try {
-            conn = ConnectionUtil.getConnection();
-            CallableStatement cst = conn.prepareCall(" { call usp_getCourseName() } ");
-            ResultSet rs = cst.executeQuery();
-            while (rs.next()) {
-                String courseName = rs.getString("Course_name");
-                listCourseName.add(new Course(courseName));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CourseDb.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            ConnectionUtil.closeConnection(conn);
-        }
-    }
-    
-    public boolean addNewCourse(String id, String name,String description, String startTime, String endTime) {
+
+
+    public boolean addNewCourse(String id, String name, String description, String startTime, String endTime) {
         Connection conn = null;
         try {
             conn = ConnectionUtil.getConnection();

@@ -69,6 +69,14 @@ CREATE TABLE faculty
     Years   nvarchar(30)
   );
   go
+  create table CMandCL(
+	cml_id int primary key identity,
+	CL_id nvarchar(20),
+	CM_id nvarchar(20)
+	foreign key (CL_id) references CL(CL_id),
+	foreign key (CM_id) references CM(CM_id)
+  )
+
   CREATE TABLE CourseAssignByFac
   (
 	id int primary key identity(1,1),
@@ -139,9 +147,8 @@ create table GradeDistributionData(
 	[0-39] float,
 	[40-69] float,
 	[70-89] float,
-	[90+] float,
-	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id),
-	FOREIGN KEY (cwDataID) REFERENCES C_Data(ID)
+	[90+] float
+	
 );
 
 create table assignCourse(

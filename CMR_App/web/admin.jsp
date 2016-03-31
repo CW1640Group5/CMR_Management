@@ -61,7 +61,7 @@
                             </div>
                             <button name="act" value="btnAddNewCourse" class="btn btn-default" id="contactbtn">Submit</button>
                             <button  value="btnAsignToCL" class="btn btn-default" id="contactbtn">
-                                <a href="AdminAssign.jsp" style="text-decoration: none;"> Asign to Course Leader</a>
+                                <a href="${pageContext.request.contextPath}/assign" style="text-decoration: none;"> Asign to Course Leader</a>
                             </button>
                             <br/>
                             <c:if test="${!empty(msgBlue)}" >

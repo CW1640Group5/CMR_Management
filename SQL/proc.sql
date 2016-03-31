@@ -1,19 +1,9 @@
 use CMR;
 
---get course name
 go
-drop procedure usp_getCourseName
-go
-create procedure usp_getCourseName
-as
-begin
-	select Course_name from Course;
-end
---end usp_getCourseName
 
 --insert new course Giap
 
-go
 drop procedure usp_addNewCourse
 go
 create procedure usp_addNewCourse
@@ -27,6 +17,7 @@ begin
 	insert into Course(Course_id, Course_name, Description, start_time, end_time) values(@c_id,@c_name,@description,@start_time,@end_time);
 end
 go
+
 select * from Course;
 
 --end insert new course Giap
@@ -118,21 +109,22 @@ exec selectAll;
 --end insert new CMR by CL
 
 
-drop procedure usp_assignCourse
+drop procedure usp_assignCourseId
 go
-create procedure usp_assignCourse
-@Course_id nvarchar(20),
-@CL_id nvarchar(20),
-@CM_id nvarchar (20)
+create procedure usp_assignCourseId
+
 as 
 begin 
-insert into assignCourse values(@Course_id,@CL_id,@CM_id)
+	SELECT top 1 (Course_id)  FROM Course ORDER BY Course_id asc
 end
-go
-select * from assignCourse
+go	
+select * from Course
+
+exec usp_assignCourse
+
+select assignCourse.CL_id,assignCourse.CM_id from assignCourse
 
 
-exec usp_assignCourse @Course_id='comp_1649',@CL_id='cl002', @CM_id='cm001'
 
 ---CHI Proc abc
 select DISTINCT Course.Course_id,Course.COURSE_NAME,Course.START_TIME,Course.END_TIME from Course,CL where CL.CL_ID='cl001'
@@ -149,3 +141,10 @@ end
 go
 exec usp_getMail @Course_id='comp_1649'
 --end
+select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
+select * from Course
+select Course.Course_id from Course
+
+
+SELECT top 1 (Course_id) AS ID FROM Course ORDER BY Course_id asc
+select * from assignCourse

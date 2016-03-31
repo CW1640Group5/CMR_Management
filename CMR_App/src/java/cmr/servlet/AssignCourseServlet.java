@@ -8,7 +8,7 @@ package cmr.servlet;
 import cmr.db.AssignDB;
 import cmr.db.CourseDb;
 import cmr.entity.Course;
-import cmr.entity.assign;
+import cmr.entity.AssignCourse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -46,17 +46,17 @@ public class AssignCourseServlet extends HttpServlet {
         String action = request.getParameter("act");
 
         if (action == null) {
-            AssignDB ad = new AssignDB();
-            List<assign> listAss = ad.getAllAssigned();
-            request.setAttribute("listAss", listAss);
+            AssignDB db = new AssignDB();
+           String s = db.getCourseName();
+            request.setAttribute("Course_id", s);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
             dispatcher.forward(request, response);
         } else if (action.equals("add")) {
             AssignDB asDB = new AssignDB();
-            String CourseId = request.getParameter("Course_id");
+
             String CL_id = request.getParameter("CL_id");
             String CM_id = request.getParameter("CM_id");
-            assign as = new assign(CourseId, CL_id, CM_id);
+            AssignCourse as = new AssignCourse(CL_id, CM_id);
             boolean result = asDB.insertAssign(as);
             if (result) {
                 request.setAttribute("msg", "done creating news");
@@ -64,7 +64,7 @@ public class AssignCourseServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             } else {
                 request.setAttribute("msg", "Error creating news");
-                ServletContext context= getServletContext();
+                ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
                 dispatcher.forward(request, response);
             }

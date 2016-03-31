@@ -17,8 +17,8 @@ public class Course {
     private String start_time;
     private String end_time;
 
-    public Course(String course_name) {
-        this.course_name = course_name;
+    public Course(String id) {
+        this.id = id;
     }
 
     public Course(String id, String course_name, String description, String start_time, String end_time) {
