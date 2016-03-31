@@ -47,7 +47,7 @@ exec usp_Login @user_name = 'admin', @uPassword = '21232f297a57a5a743894a0e4a801
 
 --end login
 
---insert new CMR by CL
+--insert new CMR by CL GIAP
 go
 drop procedure usp_addNewCMR
 go

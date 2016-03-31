@@ -24,7 +24,7 @@
         <servlet-name>CMR_UsersServlet</servlet-name>
         <servlet-class>cmr.servlet.CMR_UsersServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>AssignCourseServlet</servlet-name>
         <servlet-class>cmr.servlet.AssignCourseServlet</servlet-class>
     </servlet>
@@ -35,6 +35,14 @@
     <servlet>
         <servlet-name>ShowCLCourse</servlet-name>
         <servlet-class>cmr.servlet.ShowCLCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StatisticDataServlet</servlet-name>
+        <servlet-class>cmr.servlet.StatisticDataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GradeDistributionDataServlet</servlet-name>
+        <servlet-class>cmr.servlet.GradeDistributionDataServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CourseServlet</servlet-name>
@@ -59,6 +67,14 @@
     <servlet-mapping>
         <servlet-name>ShowCLCourse</servlet-name>
         <url-pattern>/showCLCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatisticDataServlet</servlet-name>
+        <url-pattern>/statisticData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GradeDistributionDataServlet</servlet-name>
+        <url-pattern>/gradeDistributionData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

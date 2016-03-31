@@ -58,37 +58,47 @@
         <!--main content-->
 
 
+
         <div class="container">
             <div class="row">
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Course Monitoring Report</div>
+                        <div class="panel-heading">Grade Distribution</div>
                         <div class="panel-body">
-
                             <div class="table-responsive">
-                                <form action="cmr" method="post">
+                                <form action="gradeDistributionData" method="post">
                                     <table class="table table-bordered">
-                                        <tr class="active"></tr>
-                                        <tr class="success">
-                                            <td class="active">Academic Session</td>
-                                            <td><input type="text" class="form-control" name="txtAcademicSession" value="Academic Session Test"/></td>
+                                        <tr>
+                                            <td class="success">CW Data</td>
+                                            <td class="success">
+                                                <select class="form-control" name="cbAcademicSession">
+                                                    <option value="0">--Default--</option>
+                                                    <option value="1">Coursework 1</option>
+                                                    <option value="2">Coursework 2</option>
+                                                    <option value="3">Exam</option>
+                                                    <option value="4">Overall</option>
+                                                </select>
+                                            </td>
                                         </tr>
-                                        <tr class="success">
-                                            <td class="success">Course Code + tittle</td>
-                                            <td><input type="text" class="form-control" name="txtCourse_id" value="comp_1661"/></td>
+                                        <tr>
+                                            <td class="success">0-39</td>
+                                            <td class="success"><input type="text" class="form-control" name="txt039" value="20"/></td>
                                         </tr>
-                                        <tr class="success">
-                                            <td class="success">Course Leader</td>
-                                            <td><input type="text" class="form-control" name="txtCl_id" value="cl001"/></td>
+                                        <tr>
+                                            <td class="success">40-69</td>
+                                            <td class="success"><input type="text" class="form-control" name="txt4069" value="20"/></td>
                                         </tr>
-                                        <tr class="success">
-                                            <td class="success">Student Count</td>
-                                            <td><input type="text" class="form-control" name="txtStudentCount" value="25"/></td>
+                                        <tr>
+                                            <td class="success">70-89</td>      
+                                            <td class="success"><input type="text" class="form-control" name="txt7089" value="20"/></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="success">90+</td>
+                                            <td class="success"><input type="text" class="form-control" name="txt90Plus" value="20"/></td>
                                         </tr>
                                     </table>
-
-                                    <button name="act" value="btnAddCMR" class="btn btn-default" id="contactbtn">Submit</button>
-                                    <button name="act" value="btnRedirect" class="btn btn-default" id="contactbtn"><a href="addStatisticalData.jsp">Add Static Data >></a></button>
+                                    <button name="act" value="btnAddGrDisData" class="btn btn-default" id="contactbtn">Submit</button>
 
                                     <c:if test="${!empty(msgBlue)}" >
                                         <p style="color:blue;">${msgBlue}</p>
@@ -102,19 +112,20 @@
                     </div>
                 </div>
             </div>
-            <!--end of main content-->
-            <!--footer-->
-            <footer class="site-footer">
-                <div class="container">
 
-                    <div class="bottom-footer">
-                        <div class="col-md-5">&copy Copyright of Group 5</div>
-
-                    </div>
-                </div>
-            </footer>
-            <!--end of footer-->
-            <script src="js/jquery.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-    </body>
+        </div>
+    </form>
+    <!--end of main content-->
+    <!--footer-->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="bottom-footer">
+                <div class="col-md-5">&copy Copyright of Group 5</div>
+            </div>
+        </div>
+    </footer>
+    <!--end of footer-->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
 </html>

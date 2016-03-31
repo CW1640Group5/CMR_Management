@@ -62,33 +62,39 @@
             <div class="row">
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Course Monitoring Report</div>
+                        <div class="panel-heading"><b>Statistical Data</b></div>
                         <div class="panel-body">
-
                             <div class="table-responsive">
-                                <form action="cmr" method="post">
+                                <form action="statisticData" method="post">
                                     <table class="table table-bordered">
-                                        <tr class="active"></tr>
-                                        <tr class="success">
-                                            <td class="active">Academic Session</td>
-                                            <td><input type="text" class="form-control" name="txtAcademicSession" value="Academic Session Test"/></td>
+                                        <tr>
+                                            <td class="success">Mean</td>
+                                            <td class="success"><input type="text" class="form-control" name="txtMean" value="12"/></td>
                                         </tr>
-                                        <tr class="success">
-                                            <td class="success">Course Code + tittle</td>
-                                            <td><input type="text" class="form-control" name="txtCourse_id" value="comp_1661"/></td>
+                                        <tr>
+                                            <td class="success">Median</td>
+                                            <td class="success"><input type="text" class="form-control" name="txtMedian" value="15"/></td>
                                         </tr>
-                                        <tr class="success">
-                                            <td class="success">Course Leader</td>
-                                            <td><input type="text" class="form-control" name="txtCl_id" value="cl001"/></td>
+                                        <tr>
+                                            <td class="success">Standard Deviation</td>
+                                            <td class="success"><input type="text" class="form-control" name="txtStanDeviation" value="20"/></td>
                                         </tr>
-                                        <tr class="success">
-                                            <td class="success">Student Count</td>
-                                            <td><input type="text" class="form-control" name="txtStudentCount" value="25"/></td>
+                                        <tr>
+                                            <td class="success">CW Data</td>
+                                            <td class="success">
+                                                <select class="form-control" name="cbAcademicSession">
+                                                    <option>--Default--</option>
+                                                    <option value="1">Coursework 1</option>
+                                                    <option value="2">Coursework 2</option>
+                                                    <option value="3">Exam</option>
+                                                    <option value="4">Overall</option>
+                                                </select>
+                                            </td>
                                         </tr>
                                     </table>
 
-                                    <button name="act" value="btnAddCMR" class="btn btn-default" id="contactbtn">Submit</button>
-                                    <button name="act" value="btnRedirect" class="btn btn-default" id="contactbtn"><a href="addStatisticalData.jsp">Add Static Data >></a></button>
+                                    <button name="act" value="btnAddStatisticData" class="btn btn-default" id="contactbtn">Submit</button>
+                                    <button name="act" value="btnRedirect" class="btn btn-default" id="contactbtn"><a href="addGradeDistributionData.jsp">Add Grade Distribution Data >></a></button>
 
                                     <c:if test="${!empty(msgBlue)}" >
                                         <p style="color:blue;">${msgBlue}</p>
@@ -102,19 +108,21 @@
                     </div>
                 </div>
             </div>
-            <!--end of main content-->
-            <!--footer-->
-            <footer class="site-footer">
-                <div class="container">
+        </div>
+    </div>
 
-                    <div class="bottom-footer">
-                        <div class="col-md-5">&copy Copyright of Group 5</div>
+    <!--end of main content-->
+    <!--footer-->
+        <footer class="site-footer">
+            <div class="container">
 
-                    </div>
+                <div class="bottom-footer">
+                    <div class="col-md-5">&copy Copyright of Group 5</div>
                 </div>
-            </footer>
-            <!--end of footer-->
-            <script src="js/jquery.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-    </body>
+            </div>
+        </footer>
+        <!--end of footer-->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
 </html>

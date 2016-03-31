@@ -5,10 +5,9 @@
  */
 package cmr.servlet;
 
-import cmr.db.CmrDB;
-import cmr.entity.Mailer;
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.emptyType;
+import cmr.db.GradeDistributionDataDB;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen
  */
-public class CMRServlet extends HttpServlet {
+public class GradeDistributionDataServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +33,11 @@ public class CMRServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("act");
-        if (action != null && action.equals("btnAddCMR")) {
-            addNewCMR(request, response);
+        if (action != null && action.equals("btnAddGrDisData")) {
+            addAddGrDisData(request, response);
             return;
         }
-        request.getRequestDispatcher("AddNewCMR.jsp").forward(request, response);
+        request.getRequestDispatcher("addGradeDistributionData.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,32 +79,29 @@ public class CMRServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void addNewCMR(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CmrDB db = new CmrDB();
-        String academicSession = request.getParameter("txtAcademicSession");
-        String course_id = request.getParameter("txtCourse_id");
-        String cl_id = request.getParameter("txtCl_id");
-        String studentcount = request.getParameter("txtStudentCount");
-
-        if (academicSession.equals("") || course_id.equals("") || cl_id.equals("")) {
-            request.setAttribute("msgR", "Emty Valid Data. Add New CMR Fail");
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+    private void addAddGrDisData(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+        GradeDistributionDataDB db = new GradeDistributionDataDB();
+        int cwDataID = Integer.parseInt(request.getParameter("cbAcademicSession"));
+        float z39 = Float.parseFloat(request.getParameter("txt039"));
+        float f69 = Float.parseFloat(request.getParameter("txt4069"));
+        float s89  = Float.parseFloat(request.getParameter("txt7089"));
+        float plus90 = Float.parseFloat(request.getParameter("txt90Plus"));
+                
+        if (cwDataID == 0) {
+            request.setAttribute("msgR", "Invalid Data. Add New Statistical Fail");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/addGradeDistributionData.jsp");
             dispatcher.forward(request, response);
             return;
         } else {
-            boolean result = db.addNewCMR(academicSession, course_id, cl_id, studentcount);
+            boolean result = db.addAddGrDisData(cwDataID, z39, f69, s89, plus90);
             if (result) {
-                String to=db.getEmail(course_id);
-                String subject="Request to feedback CMR";
-                String text="you have a new CMR to feedback, the cmr for course:"+course_id+" from CL:"+cl_id+" please feedback before 14 days";
-                Mailer.send(to, subject, text);
-                request.setAttribute("msgBlue", "CMR Added");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+                request.setAttribute("msgBlue", "Statistical Added");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/addGradeDistributionData.jsp");
                 dispatcher.forward(request, response);
                 return;
             } else {
-                request.setAttribute("msgR", "Add CMR Fail");
-                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+                request.setAttribute("msgR", "Add Statistical Fail");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/addGradeDistributionData.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
