@@ -115,7 +115,7 @@ create procedure usp_assignCourseId
 
 as 
 begin 
-	SELECT top 1 (Course_id)  FROM Course ORDER BY Course_id asc
+	SELECT top 1 Course_id FROM Course ORDER BY Course_id asc
 end
 go	
 select * from Course

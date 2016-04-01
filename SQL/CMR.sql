@@ -69,6 +69,7 @@ CREATE TABLE faculty
     Years   nvarchar(30)
   );
   go
+  drop table CMandCL
   create table CMandCL(
 	cml_id int primary key identity,
 	CL_id nvarchar(20),
@@ -77,6 +78,8 @@ CREATE TABLE faculty
 	foreign key (CM_id) references CM(CM_id)
   )
 
+
+  select * from CMandCL
   CREATE TABLE CourseAssignByFac
   (
 	id int primary key identity(1,1),
@@ -209,11 +212,12 @@ go
 insert into CL values('cl001',2,'comp_1640');
 insert into CL values('cl002',3,'comp_1649');
 insert into CL values('cl003',4,'comp_1661');
+insert into CL values('cl004',5,'comp_1661');
 
 insert into CM values('cm001',5,'comp_1640');
 insert into CM values('cm002',6,'comp_1649');
 insert into CM values('cm003',7,'comp_1661');
-
+insert into Cm values('cm004',8,'comp_1661');
 go
 insert into PVC values (2, 'fac001');
 insert into PVC values (3, 'fac002');
@@ -244,6 +248,11 @@ insert into assignCourse values('comp_1661','cl003','cm003')
 insert into CourseAssignByFac values('comp_1640','fac001');
 insert into CourseAssignByFac values('comp_1649','fac001');
 insert into CourseAssignByFac values('comp_1661','fac001');
+
+  insert into CMandCL values('cl001','cm001');
+   insert into CMandCL values('cl002','cm002');
+    insert into CMandCL values('cl003','cm003');
+	 insert into CMandCL values('cl004','cm004');
 
 select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
 select * from assignCourse
