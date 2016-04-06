@@ -53,7 +53,7 @@ begin
 	values (@academicSession, @course_id, @cl_id, @studentCount);
 end
 go
-exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
+--exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
 
 go
 drop procedure usp_addStatisticalData
@@ -74,7 +74,7 @@ begin
 	values (@lastIDInCMR, @cwDataID, @mean, @median, @standardDeviation);
 end
 go
-exec usp_addStatisticalData @cwDataID = '1', @mean = '56', @median = '80', @standardDeviation = 'jrj';
+--exec usp_addStatisticalData @cwDataID = '1', @mean = '56', @median = '80', @standardDeviation = 'jrj';
 
 go
 drop procedure usp_addGrDistriData
@@ -92,7 +92,7 @@ begin
 	values (@CMR_id, @cwDataID, @0_39, @40_69, @70_89, @90plus);
 end
 go
-exec usp_addGrDistriData @cwDataID = '1', @0_39 = '23', @40_69 = '55', @70_89 = '55', @90plus = '66';
+--exec usp_addGrDistriData @cwDataID = '1', @0_39 = '23', @40_69 = '55', @70_89 = '55', @90plus = '66';
 go
 drop procedure selectAll;
 go
@@ -104,29 +104,52 @@ begin
 	select * from GradeDistributionData;
 end
 go
-exec selectAll;
+--exec selectAll;
 
 --end insert new CMR by CL
 
 
-drop procedure usp_assignCourseId
+-- ASSIGN COURSE
+
+drop procedure usp_getCourseID
 go
-create procedure usp_assignCourseId
+create procedure usp_getCourseID
 
 as 
 begin 
-	SELECT top 1 Course_id FROM Course ORDER BY Course_id asc
+	SELECT top 1 Course_id FROM Course ORDER BY Course_id DESC
 end
 go	
 select * from Course
+go
+select * from CL;
+select * from CM;
 
-exec usp_assignCourse
 
-select assignCourse.CL_id,assignCourse.CM_id from assignCourse
+
+drop procedure usp_assignCourseToCL
+go
+create procedure usp_assignCourseToCL
+@course_id nvarchar(20),
+@cl_id nvarchar(20),
+@cm_id nvarchar (20)
+as
+begin
+	insert into assignCourse values(@course_id, @cl_id, @cm_id);
+end
+go
+--exec usp_assignCourseToCL 'comp_1640', 'cl001', 'cm003';
+--go
+select * from assignCourse;
+select * from Course;
+go
+
+-- End ASSIGN COURSE
 
 
 
 ---CHI Proc abc
+
 select DISTINCT Course.Course_id,Course.COURSE_NAME,Course.START_TIME,Course.END_TIME from Course,CL where CL.CL_ID='cl001'
 go
 drop procedure usp_getMail
@@ -139,12 +162,9 @@ select CMR_Users.mail from CourseAssignByFac,DLT,CMR_Users where CourseAssignByF
 and DLT.User_id=CMR_Users.User_id
 end
 go
-exec usp_getMail @Course_id='comp_1649'
---end
-select c.Course_id,CL_id,CM_id from Course a join CL b on a.Course_id=b.Course_id join CM c on c.Course_id=a.Course_id
-select * from Course
-select Course.Course_id from Course
+--exec usp_getMail @Course_id='comp_1649'
 
+--end
 
 SELECT top 1 (Course_id) AS ID FROM Course ORDER BY Course_id asc
 select * from assignCourse

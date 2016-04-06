@@ -6,13 +6,8 @@
 package cmr.servlet;
 
 import cmr.db.AssignDB;
-import cmr.db.CourseDb;
-import cmr.entity.Course;
 import cmr.entity.AssignCourse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -38,38 +33,16 @@ public class AssignCourseServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = this.getServletContext().getInitParameter("DB_URL");
-        String user = this.getServletContext().getInitParameter("DB_USER");
-        String pass = this.getServletContext().getInitParameter("DB_PASS");
-
-        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("act");
 
-        if (action == null) {
-            AssignDB db = new AssignDB();
-           String s = db.getCourseName();
-            request.setAttribute("Course_id", s);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminAssign.jsp");
-            dispatcher.forward(request, response);
-        } else if (action.equals("add")) {
-            AssignDB asDB = new AssignDB();
-
-            String CL_id = request.getParameter("CL_id");
-            String CM_id = request.getParameter("CM_id");
-            AssignCourse as = new AssignCourse(CL_id, CM_id);
-            boolean result = asDB.insertAssign(as);
-            if (result) {
-                request.setAttribute("msg", "done creating news");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
-                dispatcher.forward(request, response);
-            } else {
-                request.setAttribute("msg", "Error creating news");
-                ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/error.jsp");
-                dispatcher.forward(request, response);
-            }
+        if (action != null && action.equals("btnAssign")) {
+            assignCourse(request, response);
+            return;
         }
-
+        AssignDB db = new AssignDB();
+        String s = db.getCourseID();
+        request.setAttribute("Course_id", s);
+        request.getRequestDispatcher("AdminAssign.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -110,5 +83,33 @@ public class AssignCourseServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void assignCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AssignDB db = new AssignDB();
+
+        String course_id = request.getParameter("txtCourseID");
+        String cl_id = request.getParameter("cbCL_id");
+        String cm_id = request.getParameter("cbCM_id");
+
+        if (course_id.equals("") || cl_id.equals("0") || cm_id.equals("0")) {
+            request.setAttribute("msgR", "Course_id or cl_id, cm_id can not be null or default.");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AdminAssign.jsp");
+            dispatcher.forward(request, response);
+            return;
+        } else {
+            boolean result = db.assignCourseToCL(course_id, cl_id, cm_id);
+            if (result) {
+                request.setAttribute("msgBlue", "New Course Added");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AdminAssign.jsp");
+                dispatcher.forward(request, response);
+                return;
+            } else {
+                request.setAttribute("msgR", "Add New course Fail");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AdminAssign.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
+        }
+    }
 
 }

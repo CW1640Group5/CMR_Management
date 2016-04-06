@@ -10,10 +10,11 @@ package cmr.entity;
  * @author Bunn
  */
 public class AssignCourse {
-   private int asId;
-    private String	course_id ;
-    private String	cl_id ;
-    private String	cm_id;
+
+    private int asId;
+    private String course_id;
+    private String cl_id;
+    private String cm_id;
 
     public AssignCourse(int asId, String course_id, String cl_id, String cm_id) {
         this.asId = asId;
@@ -62,5 +63,5 @@ public class AssignCourse {
     public void setCm_id(String cm_id) {
         this.cm_id = cm_id;
     }
-    
+
 }

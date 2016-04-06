@@ -1,12 +1,4 @@
 <!doctype html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!--<meta charset="viewport" content="width=device-width, initial-scale=1.0">-->
-        <title>Assign to Course 
 <%@page import="cmr.entity.AssignCourse"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html"%>
@@ -46,29 +38,33 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Assign to Course leader</div>
                 <div class="panel-body">
-                    <form action="${pageContext.request.contextPath}/assign?act=add" method="post">
+                    <form action="assign" method="post">
                         <div class="form-group">
                             <label for="id">Course ID</label>
-                            <input type="text" value="${Course_id}" class="form-control" disabled> 
+                            <input type="text" name="txtCourseID" value="${Course_id}" class="form-control" readonly="true">
                         </div>
                         <div class="form-group">
                             <label for="Name">Course Leader</label>
-                            <select name="CL_id" class="form-control">
-                                <c:forEach items="${listAss}" var="m">
-                                    <option value="${m.getCl_id()}">${m.getCl_id()}</option>
-                                </c:forEach>
-                            </select>
+                            <select name="cbCL_id" class="form-control">
+                                    <option value="0">default</option>
+                                    <option value="cl001">Ha</option>
+                                    <option value="cl002">Giap</option>
+                                    <option value="cl003">Ngo Tung Son</option>
+                                    <option value="cl004">CL</option>
+                            </select>                            
                         </div>
                        <div class="form-group">
-                            <label for="name">Course Master</label>
-                            <select name="CM_id" class="form-control">
-                                <c:forEach items="${listAss}" var="m">
-                                    <option value="${m.getCm_id()}">${m.getCm_id()}</option>
-                                </c:forEach>
+                            <label for="name">Course Moderator</label>
+                            <select name="cbCM_id" class="form-control">
+                                <option value="0">default</option>
+                                <option value="cm001">CM</option>
+                                <option value="cm002">CM2</option>
+                                <option value="cm003">Mr.H</option>
+                                <option value="cm004">Mr.I</option>
                             </select>
                         </div>
                        
-                        <input type="submit" name="add" value="add" class="btn btn-default" id="contactbtn"/>
+                        <button value="btnAssign" name="act" class="btn btn-primary" id="contactbtn">Assign</button>
                         <br/>
                         <c:if test="${!empty(msgBlue)}" >
                             <p style="color:blue;">${msgBlue}</p>

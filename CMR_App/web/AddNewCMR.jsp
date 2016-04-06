@@ -88,7 +88,7 @@
                                     </table>
 
                                     <button name="act" value="btnAddCMR" class="btn btn-default" id="contactbtn">Submit</button>
-                                    <button name="act" value="btnRedirect" class="btn btn-default" id="contactbtn"><a href="addStatisticalData.jsp">Add Static Data >></a></button>
+                                    <a class="btn btn-default" href="addStatisticalData.jsp">Add Static Data >></a>
 
                                     <c:if test="${!empty(msgBlue)}" >
                                         <p style="color:blue;">${msgBlue}</p>

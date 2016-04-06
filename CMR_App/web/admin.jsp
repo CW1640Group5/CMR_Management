@@ -41,11 +41,11 @@
                         <form action="course" method="post" >
                             <div class="form-group">
                                 <label for="id">Course ID</label>
-                                <input type="text" name="txtcID" class="form-control" id="name" placeholder="C12345" value="c555">
+                                <input type="text" name="txtcID" class="form-control" id="name" placeholder="comp_" value="comp_">
                             </div>
                             <div class="form-group">
                                 <label for="Name">Course Name</label>
-                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Web Design" value="Web design">
+                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Coursework Name" value="Web design">
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
@@ -59,10 +59,8 @@
                                 <label for="endTime">End Time</label>
                                 <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017">
                             </div>
-                            <button name="act" value="btnAddNewCourse" class="btn btn-default" id="contactbtn">Submit</button>
-                            <button  value="btnAsignToCL" class="btn btn-default" id="contactbtn">
-                                <a href="${pageContext.request.contextPath}/assign" style="text-decoration: none;"> Asign to Course Leader</a>
-                            </button>
+                            <button name="act" value="btnAddNewCourse" class="btn btn-primary" id="contactbtn">Submit</button>
+                            <a class="btn btn-default" href="${pageContext.request.contextPath}/assign" style="text-decoration: none;"> Asign to Course Leader</a>
                             <br/>
                             <c:if test="${!empty(msgBlue)}" >
                                 <p style="color:blue;">${msgBlue}</p>
