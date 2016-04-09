@@ -1,0 +1,261 @@
+<%-- 
+    Document   : AddNewCMR
+    Created on : 10-Mar-2016, 08:16:38
+    Author     : Nguyen
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <title>Show CMR</title>
+    </head>
+    <body>
+        <!--header -->
+        <nav class="navbar navbar-inverse navbar-static-top " role="navigation">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-EV-navbar-collapse-1">
+                    
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="navbar-header navbar-inverse">
+                    <a class="navbar-brand" href="index.html">Group5</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right" id="bs-EV-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="index.html">
+                                <span class="glyphicon glyphicon-home" style="color:white;"></span>
+                                Home</a>
+                        </li>
+
+                        <li>
+                            <a href="#">School</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
+                        <li><a href="index.jsp">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--end of header -->
+        <!--main content-->
+
+        <form action="cmr" method="post">
+            <div class="container">
+                <div class="card">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Course Monitoring Report</div>
+                            <div class="panel-body">
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr class="active"></tr>
+                                        <tr class="success">
+                                            <td class="active">Academic Session</td>
+                                            <td><input type="text" name="txtAcademicSession" value="Academic Session Test"/></td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td class="success">Course Code + tittle</td>
+                                            <td><input type="text" name="txtCourse_id" value="comp_1661"/></td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td class="success">Course Leader</td>
+                                            <td><input type="text" name="txtCl_id" value="cl001"/></td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td class="success">Student Count</td>
+                                            <td><input type="text" name="txtStudentCount" value="25"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Statistical Data</div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td class="success"></td>
+                                            <td class="success">Cw1</td>
+                                            <td class="success">CW2</td>
+                                            <td class="success">Exam</td>
+                                            <td class="success">Overall</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">Mean</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">Median</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">Standard Deviation</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Grade Distribution</div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td class="success"></td>
+                                            <td class="success">0-9</td>
+                                            <td class="success">10-19</td>
+                                            <td class="success">20-29</td>
+                                            <td class="success">30-39</td>
+                                            <td class="success">40-49</td>
+                                            <td class="success">50-59</td>
+                                            <td class="success">60-69</td>
+                                            <td class="success">70-79</td>
+                                            <td class="success">80-89</td>
+                                            <td class="success">90+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">CW1</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">CW2</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">CW3</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">CW4</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">EX</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="success">Overral</td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                            <td class="success"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button name="act" value="btnAddCMR" class="btn btn-default" id="contactbtn">Submit</button>
+                <c:if test="${!empty(msgBlue)}" >
+                    <p style="color:blue;">${msgBlue}</p>
+                </c:if>
+                <c:if test="${!empty(msgR)}" >
+                    <p style="color:red;">${msgR}</p>
+                </c:if>
+            </div>
+        </form>
+        <!--end of main content-->
+        <!--footer-->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="bottom-footer">
+                    <div class="col-md-5">&copy Copyright of Group 5</div>
+                </div>
+            </div>
+        </footer>
+        <!--end of footer-->
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
