@@ -102,18 +102,16 @@
                     </div>
                 </div>
             </div>
+        </div>
             <!--end of main content-->
-            <!--footer-->
-            <footer class="site-footer">
-                <div class="container">
-
-                    <div class="bottom-footer">
-                        <div class="col-md-5">&copy Copyright of Group 5</div>
-
-                    </div>
-                </div>
-            </footer>
-            <!--end of footer-->
+           <footer class="site-footer">
+        <div class="container">
+            <div class="bottom-footer">
+                <div class="col-md-5">&copy Copyright of Group 5</div>
+            </div>
+        </div>
+    </footer>
+    <!--end of footer-->
             <script src="js/jquery.js"></script>
             <script src="js/bootstrap.min.js"></script>
     </body>
