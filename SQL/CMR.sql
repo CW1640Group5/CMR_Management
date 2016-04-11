@@ -183,7 +183,7 @@ insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phon
 ('Mr.H', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.I', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),
 ('DLT', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',4,'asadsda','0123456789','sdaas@asd.com'),
-('Mr.K', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
+('PVC', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',5,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.L', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.M', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.N', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com');
@@ -233,4 +233,5 @@ insert into CourseAssignByFac values('comp_1649','fac001');
 insert into CourseAssignByFac values('comp_1661','fac001');
 
 select * from assignCourse
+select * from Course
 --END INSERT DATABASE
