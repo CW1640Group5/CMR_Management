@@ -2,6 +2,8 @@ use CMR;
 
 go
 
+
+
 --insert new course Giap
 
 drop procedure usp_addNewCourse
@@ -53,7 +55,9 @@ begin
 	values (@academicSession, @course_id, @cl_id, @studentCount);
 end
 go
---exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1661', @cl_id='cl001', @studentCount='25'
+--exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1662', @cl_id='cl001', @studentCount='25'
+select* from Course
+select* from assignCourse
 
 go
 drop procedure usp_addStatisticalData
