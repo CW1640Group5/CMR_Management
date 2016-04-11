@@ -99,12 +99,12 @@ public class AssignCourseServlet extends HttpServlet {
         } else {
             boolean result = db.assignCourseToCL(course_id, cl_id, cm_id);
             if (result) {
-                request.setAttribute("msgBlue", "New Course Added");
+                request.setAttribute("msgBlue", "Asigned");
                 RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AdminAssign.jsp");
                 dispatcher.forward(request, response);
                 return;
             } else {
-                request.setAttribute("msgR", "Add New course Fail");
+                request.setAttribute("msgR", "Assign Fail");
                 RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AdminAssign.jsp");
                 dispatcher.forward(request, response);
                 return;
