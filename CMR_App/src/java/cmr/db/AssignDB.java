@@ -36,7 +36,7 @@ public class AssignDB {
         }
         return null;
     }
-    
+
     public boolean assignCourseToCL(String course_id, String cl_id, String cm_id) {
         Connection conn = null;
         try {
@@ -86,6 +86,4 @@ public class AssignDB {
 //        }
 //        return listAs;
 //    }
-    
-    
 }

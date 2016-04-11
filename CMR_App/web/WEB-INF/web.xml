@@ -28,6 +28,10 @@
         <servlet-name>AssignCourseServlet</servlet-name>
         <servlet-class>cmr.servlet.AssignCourseServlet</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>ApproveServlet</servlet-name>
+        <servlet-class>cmr.servlet.ApproveServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>ShowCMRServlet</servlet-name>
         <servlet-class>cmr.servlet.ShowCMRServlet</servlet-class>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>AssignCourseServlet</servlet-name>
         <url-pattern>/assign</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ApproveServlet</servlet-name>
+        <url-pattern>/approve</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowCMRServlet</servlet-name>

@@ -117,7 +117,14 @@ public class CMR_UsersServlet extends HttpServlet {
                     response.addCookie(cookie);
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/cmr");
                     dispatcher.forward(request, response);
-                } else {
+                }else if(cmrUsers.getRoleID()==4){
+                session.setAttribute("cmrUsers", cmrUsers);
+                Cookie cookie=new Cookie("txtUserName", userName);
+                response.addCookie(cookie);
+                RequestDispatcher dispatcher= getServletContext().getRequestDispatcher("/approve");
+                dispatcher.forward(request, response);
+                }
+                else {
                     request.setAttribute("msg", "Login fail");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }

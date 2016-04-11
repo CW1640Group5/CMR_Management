@@ -172,3 +172,13 @@ go
 
 SELECT top 1 (Course_id) AS ID FROM Course ORDER BY Course_id asc
 select * from assignCourse
+
+
+go
+select * from CMR
+go
+
+select * from CMR where comments is null
+update CMR
+set comments='',Action=''
+where comments='hlloo'
