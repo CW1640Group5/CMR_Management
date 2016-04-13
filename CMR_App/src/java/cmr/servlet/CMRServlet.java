@@ -99,6 +99,7 @@ public class CMRServlet extends HttpServlet {
                 String subject="Request to feedback CMR";
                 String text="you have a new CMR to feedback, the cmr for course:"+course_id+" from CL:"+cl_id+" please feedback before 14 days";
                 Mailer.send(to, subject, text);
+                
                 request.setAttribute("msgBlue", "CMR Added");
                 RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
                 dispatcher.forward(request, response);

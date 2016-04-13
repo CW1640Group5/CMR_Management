@@ -26,7 +26,7 @@ public class ApproveDB {
             CallableStatement cst = conn.prepareCall("{call getCMR_unApproved()}");
             ResultSet rs = cst.executeQuery();
             if (rs.next()) {
-                cmrId = rs.getString("CMR_id");
+                cmrId = rs.getString("AcademicSession");
             }
             return cmrId;
         } catch (SQLException ex) {
@@ -42,9 +42,7 @@ public class ApproveDB {
         try {
             conn = ConnectionUtil.getConnection();
             PreparedStatement stmt=conn.prepareStatement
-	("update CMR\n" +
-"set comments='approved',Action='done'\n" +
-"where comments is null");
+	("update CMR set comments='approved',Action='done' where comments is null");
        
             int result = stmt.executeUpdate();
             if (result > 0) {

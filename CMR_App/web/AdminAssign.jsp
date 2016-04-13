@@ -63,6 +63,17 @@
                                 <option value="cm004">Mr.I</option>
                             </select>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Faculty</label>
+                            <select name="cbfac_id" class="form-control">
+                                <option value="0">default</option>
+                                <option value="fac001">Chi</option>
+                                <option value="fac002">fac</option>
+                                <option value="fac003">Ngo Tung Son</option>
+                                <option value="fac004">Giap</option>
+                            </select>
+                        </div>
                        
                         <button value="btnAssign" name="act" class="btn btn-primary" id="contactbtn">Assign</button>
                         <br/>

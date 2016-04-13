@@ -136,10 +136,11 @@ go
 create procedure usp_assignCourseToCL
 @course_id nvarchar(20),
 @cl_id nvarchar(20),
-@cm_id nvarchar (20)
+@cm_id nvarchar (20),
+@fac_id nvarchar (20)
 as
 begin
-	insert into assignCourse values(@course_id, @cl_id, @cm_id);
+	insert into assignCourse values(@course_id, @cl_id, @cm_id, @fac_id);
 end
 go
 --exec usp_assignCourseToCL 'comp_1640', 'cl001', 'cm003';
@@ -162,22 +163,32 @@ create procedure usp_getMail
 @Course_id nvarchar(20)
 as
 begin
-select CMR_Users.mail from CourseAssignByFac,DLT,CMR_Users where CourseAssignByFac.Course_id=@Course_id and CourseAssignByFac.faculty_id=DLT.faculty_id 
+select CMR_Users.mail from assignCourse,DLT,CMR_Users where assignCourse.Course_id=@Course_id and assignCourse.faculty_id=DLT.faculty_id 
 and DLT.User_id=CMR_Users.User_id
 end
 go
---exec usp_getMail @Course_id='comp_1649'
+--exec usp_getMail @Course_id='comp_1663'
 
 --end
 
+drop procedure getCMR_unApproved
+go
+create procedure getCMR_unApproved
+as
+begin
+select * from CMR where comments is null
+end
+go
+exec getCMR_unApproved
 SELECT top 1 (Course_id) AS ID FROM Course ORDER BY Course_id asc
 select * from assignCourse
 
 
 go
-select * from CMR
+select * from Course
 go
 
+<<<<<<< HEAD
 drop procedure getCMR_unApproved
 go
 create procedure getCMR_unApproved
@@ -197,3 +208,10 @@ update CMR
 set comments='approved',Action='done'
 where comments is null
 end
+=======
+select * from faculty
+
+update CMR
+set comments='approve',Action='done'
+where comments is null
+>>>>>>> origin/master

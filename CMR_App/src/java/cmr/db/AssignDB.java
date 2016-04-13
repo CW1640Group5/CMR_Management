@@ -37,15 +37,16 @@ public class AssignDB {
         return null;
     }
 
-    public boolean assignCourseToCL(String course_id, String cl_id, String cm_id) {
+    public boolean assignCourseToCL(String course_id, String cl_id, String cm_id, String fac_id) {
         Connection conn = null;
         try {
             conn = ConnectionUtil.getConnection();
-            CallableStatement cstmt = conn.prepareCall("{call usp_assignCourseToCL(?,?,?)}");
+            CallableStatement cstmt = conn.prepareCall("{call usp_assignCourseToCL(?,?,?,?)}");
 
             cstmt.setString("course_id", course_id);
             cstmt.setString("cl_id", cl_id);
             cstmt.setString("cm_id", cm_id);
+            cstmt.setString("fac_id", fac_id);
             int result = cstmt.executeUpdate();
             if (result > 0) {
                 return true;
