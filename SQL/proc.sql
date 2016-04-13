@@ -136,10 +136,11 @@ go
 create procedure usp_assignCourseToCL
 @course_id nvarchar(20),
 @cl_id nvarchar(20),
-@cm_id nvarchar (20)
+@cm_id nvarchar (20),
+@fac_id nvarchar (20)
 as
 begin
-	insert into assignCourse values(@course_id, @cl_id, @cm_id);
+	insert into assignCourse values(@course_id, @cl_id, @cm_id, @fac_id);
 end
 go
 --exec usp_assignCourseToCL 'comp_1640', 'cl001', 'cm003';
@@ -175,7 +176,7 @@ select * from assignCourse
 
 
 go
-select * from CMR
+select * from Course
 go
 
 select * from CMR where comments is null

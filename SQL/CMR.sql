@@ -145,8 +145,10 @@ create table assignCourse(
 	Course_id nvarchar(20),
 	CL_id nvarchar(20),
 	CM_id nvarchar (20),
+	faculty_id  nvarchar(20),
 	foreign key (CL_id) references CL(CL_id),
 	foreign key (CM_id) references CM(CM_id),
+	foreign key (faculty_id) references faculty(faculty_id),
 	foreign key (Course_id)references Course(Course_id)
 )
 
@@ -160,9 +162,10 @@ insert into Course values('comp_1649','interaction design','description','01-10-
 insert into Course values('comp_1661','Application Development for Mobile Devices','description','01-10-2016','04-15-2016');
 select * from faculty
 go
-insert into faculty values ('fac001', 'Nguyen Thuy Duong', 'comp_1640', 'B14');
+insert into faculty values ('fac001', 'Chi', 'comp_1640', 'B14');
 insert into faculty values ('fac002', 'Jaya', 'comp_1649', 'B14');
 insert into faculty values ('fac003', 'Ngo Tung Son', 'comp_1661', 'B14');
+insert into faculty values ('fac004', 'Giap', 'comp_1661', 'B14');
 go
 insert into Role values
 ('Admin'), 
@@ -182,7 +185,7 @@ insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phon
 ('CM2', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.H', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.I', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',3,'asadsda','0123456789','sdaas@asd.com'),
-('DLT', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',4,'asadsda','0123456789','sdaas@asd.com'),
+('DLT', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',4,'asadsda','0123456789','giapnhgc00561@fpt.edu.vn'),
 ('PVC', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',5,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.L', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
 ('Mr.M', '21232f297a57a5a743894a0e4a801fc3', 'M','01-10-1990',2,'asadsda','0123456789','sdaas@asd.com'),
@@ -190,6 +193,10 @@ insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phon
 go
 insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
 ('chi','21232f297a57a5a743894a0e4a801fc3','M','08-12-1994',4,'asdasda','0123456789','chibvhgc00544@fpt.edu.vn');
+insert into CMR_Users (User_name, uPassword, gender, DOB, Role_id, address, phone, mail) values
+('gaip1','21232f297a57a5a743894a0e4a801fc3','M','08-12-1994',4,'asdasda','0123456789','giapnhgc00561@fpt.edu.vn');
+ 
+go
  
 go
 insert into Administrators values (1);
@@ -213,24 +220,21 @@ go
 insert into DLT values('DLT_01', 15, 'fac001');
 insert into DLT values('DLT_02', 2, 'fac002');
 insert into DLT values('DLT_03', 3, 'fac003');
+insert into DLT values('DLT_04', 16, 'fac004');
 go
 insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '25', 'comments 1', 'Action1');
 insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2');
 insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3');
-drop table CMR
+
 go
 insert into C_Data
 values ('CW1'), ('CW2'), ('Exam'), ('Overall');
 select * from C_Data
 
 go
-insert into assignCourse values('comp_1640','cl001','cm001');
-insert into assignCourse values('comp_1649','cl002','cm002');
-insert into assignCourse values('comp_1661','cl003','cm003');
-
-insert into CourseAssignByFac values('comp_1640','fac001');
-insert into CourseAssignByFac values('comp_1649','fac001');
-insert into CourseAssignByFac values('comp_1661','fac001');
+insert into assignCourse values('comp_1640','cl001','cm001','fac001');
+insert into assignCourse values('comp_1649','cl002','cm002','fac002');
+insert into assignCourse values('comp_1661','cl003','cm003', 'fac003');
 
 select * from assignCourse
 select * from StatisticalData
