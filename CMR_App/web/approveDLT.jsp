@@ -36,15 +36,31 @@
 
         <div class="jumbotron">
             <div class="panel panel-default">
-                <div class="panel-heading">Approve The CMR</div>
+                <div class="panel-heading">Feedback The CMR</div>
                 <br/>
                 <br/>
                 <div class="panel-body">
                     <form action="approve" method="post">
+                        <br/>
                         <select name="CMR_id" class="form-control">
                             <option value="${CMR_id}">${CMR_id}</option>
+                          
                         </select>
 
+                        <br/>
+                        <br/>
+                        <table class="table table-bordered">
+                                        <tr class="active"></tr>
+                                        <tr class="success">
+                                            <td class="active">Commit</td>
+                                            <td><input type="text" class="form-control" name="txtcomit" value="this cmr i have check"/></td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td class="success">action</td>
+                                            <td><input type="text" class="form-control" name="txtaction" value="Action 1"/></td>
+                                        </tr>
+                                       
+                        </table>
                         <br/>
                         <br/>
                         <button value="btnApprove" name="act" class="btn btn-primary" id="contactbtn">Approve CMR</button>
