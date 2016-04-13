@@ -167,10 +167,19 @@ select CMR_Users.mail from assignCourse,DLT,CMR_Users where assignCourse.Course_
 and DLT.User_id=CMR_Users.User_id
 end
 go
---exec usp_getMail @Course_id='comp_1649'
+--exec usp_getMail @Course_id='comp_1663'
 
 --end
 
+drop procedure getCMR_unApproved
+go
+create procedure getCMR_unApproved
+as
+begin
+select * from CMR where comments is null
+end
+go
+exec getCMR_unApproved
 SELECT top 1 (Course_id) AS ID FROM Course ORDER BY Course_id asc
 select * from assignCourse
 
@@ -179,7 +188,8 @@ go
 select * from Course
 go
 
-select * from CMR where comments is null
+select * from faculty
+
 update CMR
-set comments='',Action=''
-where comments='hlloo'
+set comments='approve',Action='done'
+where comments is null
