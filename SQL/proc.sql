@@ -163,7 +163,7 @@ create procedure usp_getMail
 @Course_id nvarchar(20)
 as
 begin
-select CMR_Users.mail from CourseAssignByFac,DLT,CMR_Users where CourseAssignByFac.Course_id=@Course_id and CourseAssignByFac.faculty_id=DLT.faculty_id 
+select CMR_Users.mail from assignCourse,DLT,CMR_Users where assignCourse.Course_id=@Course_id and assignCourse.faculty_id=DLT.faculty_id 
 and DLT.User_id=CMR_Users.User_id
 end
 go

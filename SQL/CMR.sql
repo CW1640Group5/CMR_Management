@@ -162,10 +162,10 @@ insert into Course values('comp_1649','interaction design','description','01-10-
 insert into Course values('comp_1661','Application Development for Mobile Devices','description','01-10-2016','04-15-2016');
 select * from faculty
 go
-insert into faculty values ('fac001', 'Chi', 'comp_1640', 'B14');
-insert into faculty values ('fac002', 'Jaya', 'comp_1649', 'B14');
-insert into faculty values ('fac003', 'Ngo Tung Son', 'comp_1661', 'B14');
-insert into faculty values ('fac004', 'Giap', 'comp_1661', 'B14');
+insert into faculty values ('fac001', 'CNTT', 'comp_1640', 'B14');
+insert into faculty values ('fac002', 'Dien tu vien thnong', 'comp_1649', 'B14');
+insert into faculty values ('fac003', 'Khoa 1', 'comp_1661', 'B14');
+insert into faculty values ('fac004', 'Khoa 2', 'comp_1661', 'B14');
 go
 insert into Role values
 ('Admin'), 
@@ -240,3 +240,4 @@ select * from assignCourse
 select * from StatisticalData
 select * from CMR
 --END INSERT DATABASE
+
