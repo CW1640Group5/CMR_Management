@@ -178,7 +178,22 @@ go
 select * from CMR
 go
 
+drop procedure getCMR_unApproved
+go
+create procedure getCMR_unApproved
+as
+begin
 select * from CMR where comments is null
+end
+go
+exec getCMR_unApproved
+drop procedure setApprove
+go
+create procedure setApprove
+@comments text
+as 
+begin
 update CMR
-set comments='',Action=''
-where comments='hlloo'
+set comments='approved',Action='done'
+where comments is null
+end
