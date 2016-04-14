@@ -12,22 +12,39 @@
     </head>
     <body>
         <!--header -->
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse navbar-static-top " role="navigation">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Group5</a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <a href="index.html">
-                            <span class="glyphicon glyphicon-home" style="color:white;"></span>
-                            Home</a>
-                    </li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
-                    <li><a href="#">About Us</a></li> 
-                    <li><a href="index.jsp">Logout</a></li>
-                </ul>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-EV-navbar-collapse-1">
 
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="navbar-header navbar-inverse">
+                    <a class="navbar-brand" href="index.html">Group5</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right" id="bs-EV-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="index.html">
+                                <span class="glyphicon glyphicon-home" style="color:white;"></span>
+                                Home</a>
+                        </li>
+
+                        <li>
+                            <a href="#">School</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${cmrUsers.getUserName()}</a></li>
+                        <li><a href="index.jsp">Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <!--end ofheader -->

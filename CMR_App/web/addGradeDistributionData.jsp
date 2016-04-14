@@ -118,6 +118,8 @@
     <!--end of main content-->
     <!--footer-->
     <footer class="site-footer">
+         <br>
+                <br><br><br><br><br><br>
         <div class="container">
             <div class="bottom-footer">
                 <div class="col-md-5">&copy Copyright of Group 5</div>
