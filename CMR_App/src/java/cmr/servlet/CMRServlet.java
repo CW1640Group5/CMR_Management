@@ -5,6 +5,7 @@
  */
 package cmr.servlet;
 
+import cmr.db.ApproveDB;
 import cmr.db.CmrDB;
 import cmr.entity.Mailer;
 import com.sun.xml.rpc.processor.modeler.j2ee.xml.emptyType;
@@ -34,10 +35,17 @@ public class CMRServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("act");
+         
         if (action != null && action.equals("btnAddCMR")) {
-            addNewCMR(request, response);
+            addNewCMR(request, response);       
             return;
-        }
+        } else if (action.equals("btnApproveStatic")) {
+            approveCMRStatic(request, response);     
+            return;
+        }  
+        ApproveDB db = new ApproveDB();
+        String s = db.getCMR_Static();
+          request.setAttribute("CMR_id", s);
         request.getRequestDispatcher("AddNewCMR.jsp").forward(request, response);
     }
 
@@ -112,5 +120,27 @@ public class CMRServlet extends HttpServlet {
             }
         }
     }
-
+private void approveCMRStatic(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ApproveDB db = new ApproveDB();
+        String cmr_id = request.getParameter("CMR_id");
+        if (cmr_id.equals("")) {
+            request.setAttribute("msgR", "CMR_ID can not be null or default.");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+            dispatcher.forward(request, response);
+            return;
+        } else {
+            boolean result = db.approveCMRStatic();
+            if (result) {
+                request.setAttribute("msgBlue1", "Approved");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+                dispatcher.forward(request, response);
+                return;
+            } else {
+                request.setAttribute("msgR1", "Approve failed");
+                RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AddNewCMR.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
+        }
+    }
 }

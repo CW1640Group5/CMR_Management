@@ -3,7 +3,8 @@
     Created on : 10-Mar-2016, 08:16:38
     Author     : Nguyen
 --%>
-
+<%@page import="cmr.entity.CMR_Approve"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
                         <div class="panel-heading">Course Monitoring Report</div>
                         <div class="panel-body">
 
-                            <div class="table-responsive">
+                            <div class="table-responsive col-md-8">
                                 <form action="cmr" method="post">
                                     <table class="table table-bordered">
                                         <tr class="active"></tr>
@@ -89,6 +90,8 @@
 
                                     <button name="act" value="btnAddCMR" class="btn btn-default" id="contactbtn">Submit</button>
                                     <a class="btn btn-default" href="addStatisticalData.jsp">Add Static Data >></a>
+                                    <br>
+                                    <br>
 
                                     <c:if test="${!empty(msgBlue)}" >
                                         <p style="color:blue;">${msgBlue}</p>
@@ -98,6 +101,26 @@
                                     </c:if>
                                 </form>
                             </div>
+                            <div class="col-md-4">
+                                <form action="cmr" method="post">
+                                    <br/>
+                                    <select name="CMR_id" class="form-control">
+                                        <option value="${CMR_id}">${CMR_id}</option>
+                                    </select>
+                                    <br/>
+                                    <br/>                            
+                                    <br/>
+                                    <br/>
+                                    <button value="btnApproveStatic" name="act" class="btn btn-primary" id="contactbtn">Approve Static Of CMR</button>
+                                    <br/>
+                                    <c:if test="${!empty(msgBlue1)}" >
+                                        <p style="color:blue;">${msgBlue}</p>
+                                    </c:if>
+                                    <c:if test="${!empty(msgR1)}" >
+                                        <p style="color:red;">${msgR}</p>
+                                    </c:if>
+                                </form>
+                            </div>    
                         </div>
                     </div>
                 </div>

@@ -225,12 +225,8 @@ go
 insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '25', 'comments 1', 'Action1');
 insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2');
 insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3');
-<<<<<<< HEAD
-insert into CMR values ('AcademicSession4', 'comp_1662', 'cl003', 'static 3', '22', null, null);
-drop table CMR
-=======
 
->>>>>>> origin/master
+
 go
 insert into C_Data
 values ('CW1'), ('CW2'), ('Exam'), ('Overall');

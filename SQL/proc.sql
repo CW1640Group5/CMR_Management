@@ -208,10 +208,13 @@ update CMR
 set comments='approved',Action='done'
 where comments is null
 end
-=======
-select * from faculty
+go
 
-update CMR
-set comments='approve',Action='done'
-where comments is null
->>>>>>> origin/master
+drop procedure getCMR_Static
+go
+create procedure getCMR_Static
+as begin
+select * from CMR where static is null
+end
+go
+exec getCMR_Static

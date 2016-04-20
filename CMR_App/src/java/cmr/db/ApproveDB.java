@@ -18,7 +18,44 @@ import java.util.logging.Logger;
 public class ApproveDB {
 
     Connection conn = null;
-
+    
+    public String getCMR_Static(){
+       String cmrName=null;
+       try {
+            conn = ConnectionUtil.getConnection();
+            CallableStatement cst = conn.prepareCall("{call getCMR_Static()}");
+            ResultSet rs = cst.executeQuery();
+            if (rs.next()) {
+                cmrName = rs.getString("AcademicSession");
+            }
+            return cmrName;
+        } catch (SQLException ex) {
+            Logger.getLogger(ApproveDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionUtil.closeConnection(conn);
+        }
+        return null;
+    }
+    public boolean approveCMRStatic() {
+        Connection conn = null;
+        try {
+            conn = ConnectionUtil.getConnection();
+            PreparedStatement stmt=conn.prepareStatement
+	("update CMR set static='done' where static is null");
+       
+            int result = stmt.executeUpdate();
+            if (result > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AssignDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            ConnectionUtil.closeConnection(conn);
+        }
+        return false;
+    }
+    
+    
     public String getCmrID() {
         String cmrId = null;
         try {
