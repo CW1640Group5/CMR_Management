@@ -187,6 +187,8 @@ select * from assignCourse
 go
 select * from Course
 go
+drop procedure setApprove
+go
 create procedure setApprove
 @comments text
 as 
