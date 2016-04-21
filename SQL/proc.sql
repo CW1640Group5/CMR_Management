@@ -187,19 +187,6 @@ select * from assignCourse
 go
 select * from Course
 go
-
-<<<<<<< HEAD
-drop procedure getCMR_unApproved
-go
-create procedure getCMR_unApproved
-as
-begin
-select * from CMR where comments is null
-end
-go
-exec getCMR_unApproved
-drop procedure setApprove
-go
 create procedure setApprove
 @comments text
 as 
