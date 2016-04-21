@@ -25,7 +25,7 @@ select * from Course;
 --end insert new course Giap
 
 --login proc
-
+select*from CMR_Users
 drop procedure usp_Login
 go
 create procedure usp_Login

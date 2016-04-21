@@ -82,20 +82,32 @@
                                         </tr>
                                         <tr>
                                             <td class="success">0-39</td>
-                                            <td class="success"><input type="text" class="form-control" name="txt039" value="20"/></td>
+                                            <td class="success">
+                                                <input type="text" class="form-control" name="txt039" placeholder="20" 
+                                                                       required data-validation-required-message="Please enter Student Number"/>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="success">40-69</td>
-                                            <td class="success"><input type="text" class="form-control" name="txt4069" value="20"/></td>
+                                            <td class="success">
+                                                <input type="text" class="form-control" name="txt4069" placeholder="20"
+                                                                       required data-validation-required-message="Please enter Student Number"/>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="success">70-89</td>      
-                                            <td class="success"><input type="text" class="form-control" name="txt7089" value="20"/></td>
+                                            <td class="success">
+                                                <input type="text" class="form-control" name="txt7089" placeholder="20"
+                                                       required data-validation-required-message="Please enter Student Number"/>
+                                            </td>
 
                                         </tr>
                                         <tr>
                                             <td class="success">90+</td>
-                                            <td class="success"><input type="text" class="form-control" name="txt90Plus" value="20"/></td>
+                                            <td class="success">
+                                                <input type="text" class="form-control" name="txt90Plus" placeholder="20"
+                                                                       required data-validation-required-message="Please enter Student Number"/>
+                                            </td>
                                         </tr>
                                     </table>
                                     <button name="act" value="btnAddGrDisData" class="btn btn-default" id="contactbtn">Submit</button>
@@ -129,5 +141,6 @@
     <!--end of footer-->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>
 </body>
 </html>

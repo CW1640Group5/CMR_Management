@@ -69,15 +69,18 @@
                                     <table class="table table-bordered">
                                         <tr>
                                             <td class="success">Mean</td>
-                                            <td class="success"><input type="text" class="form-control" name="txtMean" value="12"/></td>
+                                            <td class="success"><input type="text" class="form-control" name="txtMean" placeholder="12"
+                                                                       required data-validation-required-message="Please enter Mean mark"/></td>
                                         </tr>
                                         <tr>
                                             <td class="success">Median</td>
-                                            <td class="success"><input type="text" class="form-control" name="txtMedian" value="15"/></td>
+                                            <td class="success"><input type="text" class="form-control" name="txtMedian" placeholder="15"
+                                                                       required data-validation-required-message="Please enter Median mark"/></td>
                                         </tr>
                                         <tr>
                                             <td class="success">Standard Deviation</td>
-                                            <td class="success"><input type="text" class="form-control" name="txtStanDeviation" value="20"/></td>
+                                            <td class="success"><input type="text" class="form-control" name="txtStanDeviation" placeholder="20"
+                                                                       required data-validation-required-message="Please enter Standard Deviation"/></td>
                                         </tr>
                                         <tr>
                                             <td class="success">CW Data</td>
@@ -125,5 +128,6 @@
         <!--end of footer-->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>
 </body>
 </html>

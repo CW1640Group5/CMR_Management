@@ -65,26 +65,34 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Course Monitoring Report</div>
                         <div class="panel-body">
-
-                            <div class="table-responsive col-md-8">
+                            <div class="table-responsive col-md-12">
                                 <form action="cmr" method="post">
                                     <table class="table table-bordered">
                                         <tr class="active"></tr>
                                         <tr class="success">
                                             <td class="active">Academic Session</td>
-                                            <td><input type="text" class="form-control" name="txtAcademicSession" value="Academic Session Test"/></td>
+                                            <td><input type="text" class="form-control" name="txtAcademicSession" placeholder="CMR Name"/></td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Course Code + tittle</td>
-                                            <td><input type="text" class="form-control" name="txtCourse_id" value="comp_1661"/></td>
+                                            <td>
+                                                <input type="text" class="form-control" name="txtCourse_id" placeholder="comp_[Course_Number]"
+                                                       required data-validation-required-message="Please enter CourseID"/>
+                                            </td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Course Leader</td>
-                                            <td><input type="text" class="form-control" name="txtCl_id" value="cl001"/></td>
+                                            <td>
+                                                <input type="text" class="form-control" name="txtCl_id" placeholder="cl001"
+                                                      required data-validation-required-message="Please enter Course Leader Name" />
+                                            </td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Student Count</td>
-                                            <td><input type="text" class="form-control" name="txtStudentCount" value="25"/></td>
+                                            <td>
+                                                <input type="text" class="form-control" name="txtStudentCount" placeholder="25"
+                                                       required data-validation-required-message="Please enter Student count Number"/>
+                                            </td>
                                         </tr>
                                     </table>
 
@@ -101,26 +109,6 @@
                                     </c:if>
                                 </form>
                             </div>
-                            <div class="col-md-4">
-                                <form action="cmr" method="post">
-                                    <br/>
-                                    <select name="CMR_id" class="form-control">
-                                        <option value="${CMR_id}">${CMR_id}</option>
-                                    </select>
-                                    <br/>
-                                    <br/>                            
-                                    <br/>
-                                    <br/>
-                                    <button value="btnApproveStatic" name="act" class="btn btn-primary" id="contactbtn">Approve Static Of CMR</button>
-                                    <br/>
-                                    <c:if test="${!empty(msgBlue1)}" >
-                                        <p style="color:blue;">${msgBlue}</p>
-                                    </c:if>
-                                    <c:if test="${!empty(msgR1)}" >
-                                        <p style="color:red;">${msgR}</p>
-                                    </c:if>
-                                </form>
-                            </div>    
                         </div>
                     </div>
                 </div>
@@ -140,5 +128,6 @@
         <!--end of footer-->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
     </body>
 </html>

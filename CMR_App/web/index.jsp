@@ -94,14 +94,16 @@
                                             <div class="form-group">
                                                 <label class="control-label col-sm-2" for="name"></label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="userName" name="txtUserName" placeholder="User name">
+                                                    <input type="text" class="form-control" id="userName" name="txtUserName" placeholder="User name"
+                                                           required data-validation-required-message="Please enter User Name">
 
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-sm-2" for="pwd"></label>
                                                 <div class="col-sm-10"> 
-                                                    <input type="password" class="form-control" id="pwd" name="txtPassword" placeholder="Password">
+                                                    <input type="password" class="form-control" id="pwd" name="txtPassword" placeholder="Password"
+                                                           required data-validation-required-message="Please enter your password">
 
                                                 </div>
                                             </div>
@@ -153,5 +155,6 @@
         <!--end of footer-->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
     </body>
 </html>

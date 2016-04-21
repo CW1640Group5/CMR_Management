@@ -58,23 +58,28 @@
                         <form action="course" method="post" >
                             <div class="form-group">
                                 <label for="id">Course ID</label>
-                                <input type="text" name="txtcID" class="form-control" id="name" placeholder="comp_" value="comp_">
+                                <input type="text" name="txtcID" class="form-control" id="name" placeholder="comp_" 
+                                       required data-validation-required-message="Please enter CourseID.">
                             </div>
                             <div class="form-group">
                                 <label for="Name">Course Name</label>
-                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Coursework Name" value="Web design">
+                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Coursework Name" 
+                                       required data-validation-required-message="Please enter Course Name.">
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea name="txtDescription" class="form-control" id="name" placeholder="Description" value="Description"></textarea>
+                                <textarea name="txtDescription" class="form-control" id="name" placeholder="Description" value="Description"  
+                                          required data-validation-required-message="Please enter some Detail."></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="startTime">Start Time</label>
-                                <input type="datetime" name="txtcStartDate" class="form-control" id="startTime" placeholder="MM/dd/yyyy" value="12/25/2016">
+                                <input type="datetime" name="txtcStartDate" class="form-control" id="startTime" placeholder="MM/dd/yyyy" value="12/25/2016"
+                                        required data-validation-required-message="Please enter StartTime">
                             </div>
                             <div class="form-group">
                                 <label for="endTime">End Time</label>
-                                <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017">
+                                <input type="datetime" name="txtcEndDate" class="form-control" id="endTime" placeholder="MM/dd/yyyy" value="12/25/2017"
+                                        required data-validation-required-message="Please enter End Time.">
                             </div>
                             <button name="act" value="btnAddNewCourse" class="btn btn-primary" id="contactbtn">Submit</button>
                             <a class="btn btn-default" href="${pageContext.request.contextPath}/assign" style="text-decoration: none;"> Asign to Course Leader</a>
@@ -111,4 +116,5 @@
         <!--end of footer-->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
     </body>
