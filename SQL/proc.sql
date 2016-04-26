@@ -45,70 +45,176 @@ go
 drop procedure usp_addNewCMR
 go
 create procedure usp_addNewCMR
-@academicSession nvarchar(100),
-@course_id    nvarchar(20),
-@cl_id        nvarchar(20),
-@studentCount nvarchar(50)
+	@academicSession nvarchar(100),
+	@course_id    nvarchar(20),
+	@cl_id        nvarchar(20),
+	@studentCount nvarchar(50),
+
+	@MeanCW1 int,
+	@MeanCW2 int,
+	@MeanExam int,
+	@MeanOverall int,
+
+	@MedianCW1 int,
+	@MedianCW2 int,
+	@MedianExam int,
+	@MedianOverall int,
+
+	@SDCW1 int,
+	@SDCW2 int,
+	@SDExam int,
+	@SDOverall int,
+
+	@0_39CW1 int,
+	@0_39CW2 int,
+	@0_39Exam int,
+	@0_39Overall int,
+
+	@40_69CW1 int,
+	@40_69CW2 int,
+	@40_69Exam int,
+	@40_69Overall int,
+
+	@70_89CW1 int,
+	@70_89CW2 int,
+	@70_89Exam int,
+	@70_89Overall int,
+
+	@90_CW1 int,
+	@90_CW2 int,
+	@90_Exam int,
+	@90_Overall int
 as
 begin
-	insert into CMR(AcademicSession, Course_id, CL_id, Studentcount) 
-	values (@academicSession, @course_id, @cl_id, @studentCount);
+	insert into 
+	CMR
+	(
+	AcademicSession, 
+	Course_id, 
+	CL_id, 
+	Studentcount, 
+
+	MeanCW1, 
+	MeanCW2, 
+	MeanExam, 
+	MeanOverall, 
+
+	MedianCW1, 
+	MedianCW2, 
+	MedianExam, 
+	MedianOverall,
+
+	SDCW1,
+	SDCW2,
+	SDExam,
+	SDOverall,
+
+	[0-39CW1],
+	[0-39CW2],
+	[0-39Exam],
+	[0-39Overall],
+
+	[40-69CW1],
+	[40-69CW2],
+	[40-69Exam],
+	[40-69Overall],
+
+	[70-89CW1],
+	[70-89CW2],
+	[70-89Exam],
+	[70-89Overall],
+
+	[90+CW1],
+	[90+CW2],
+	[90+Exam],
+	[90+Overall]
+	) 
+	values 
+	(
+	@academicSession, 
+	@course_id, 
+	@cl_id, 
+	@studentCount, 
+
+	@MeanCW1, 
+	@MeanCW2, 
+	@MeanExam, 
+	@MeanOverall, 
+
+	@MedianCW1, 
+	@MedianCW2, 
+	@MedianExam, 
+	@MedianOverall,
+
+	@SDCW1,
+	@SDCW2,
+	@SDExam,
+	@SDOverall,
+
+	@0_39CW1,
+	@0_39CW2,
+	@0_39Exam,
+	@0_39Overall,
+
+	@40_69CW1,
+	@40_69CW2,
+	@40_69Exam,
+	@40_69Overall,
+
+	@70_89CW1,
+	@70_89CW2,
+	@70_89Exam,
+	@70_89Overall,
+
+	@90_CW1,
+	@90_CW2,
+	@90_Exam,
+	@90_Overall
+	);
 end
 go
---exec usp_addNewCMR @academicSession='testProc',@course_id='comp_1662', @cl_id='cl001', @studentCount='25'
+exec usp_addNewCMR 
+	@academicSession='testProc',
+	@course_id='comp_1661', 
+	@cl_id='cl001', 
+	@studentCount='25',
+	@MeanCW1=1, 
+	@MeanCW2=1, 
+	@MeanExam=1, 
+	@MeanOverall=1, 
+
+	@MedianCW1=1, 
+	@MedianCW2=1, 
+	@MedianExam=1, 
+	@MedianOverall=1,
+
+	@SDCW1=1,
+	@SDCW2=1,
+	@SDExam=1,
+	@SDOverall=1,
+
+	@0_39CW1=1,
+	@0_39CW2=1,
+	@0_39Exam=1,
+	@0_39Overall=1,
+
+	@40_69CW1=1,
+	@40_69CW2=1,
+	@40_69Exam=1,
+	@40_69Overall=1,
+
+	@70_89CW1=1,
+	@70_89CW2=1,
+	@70_89Exam=1,
+	@70_89Overall=1,
+
+	@90_CW1=1,
+	@90_CW2=1,
+	@90_Exam=1,
+	@90_Overall=1
+
 select* from Course
 select* from assignCourse
-
-go
-drop procedure usp_addStatisticalData
-go
-create procedure usp_addStatisticalData
-	@cwDataID int,
-	@mean text,
-	@median text,
-	@standardDeviation text
-	--CW1 varchar(10),
-	--CW2 varchar(10),
-	--Exam varchar(10),
-	--Overall varchar(10),
-as
-begin
-	Declare @lastIDInCMR int = (SELECT TOP 1 (CMR_id) AS ID FROM CMR ORDER BY CMR_id DESC);
-	insert into StatisticalData 
-	values (@lastIDInCMR, @cwDataID, @mean, @median, @standardDeviation);
-end
-go
---exec usp_addStatisticalData @cwDataID = '1', @mean = '56', @median = '80', @standardDeviation = 'jrj';
-
-go
-drop procedure usp_addGrDistriData
-go
-create procedure usp_addGrDistriData	
-	@cwDataID int,
-	@0_39 float,
-	@40_69 float,
-	@70_89 float,
-	@90plus float
-as
-begin
-	Declare @CMR_id int = (SELECT TOP 1 (CMR_id) AS ID FROM CMR ORDER BY CMR_id DESC);
-	insert into GradeDistributionData 
-	values (@CMR_id, @cwDataID, @0_39, @40_69, @70_89, @90plus);
-end
-go
---exec usp_addGrDistriData @cwDataID = '1', @0_39 = '23', @40_69 = '55', @70_89 = '55', @90plus = '66';
-go
-drop procedure selectAll;
-go
-create procedure selectAll
-as
-begin
-	select * from CMR;
-	select * from StatisticalData;
-	select * from GradeDistributionData;
-end
-go
---exec selectAll;
 
 --end insert new CMR by CL
 

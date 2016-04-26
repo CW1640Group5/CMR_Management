@@ -58,17 +58,17 @@
                         <form action="course" method="post" >
                             <div class="form-group">
                                 <label for="id">Course ID</label>
-                                <input type="text" name="txtcID" class="form-control" id="name" placeholder="comp_" 
+                                <input type="text" name="txtcID" class="form-control" id="name" value="comp_" placeholder="comp_" 
                                        required data-validation-required-message="Please enter CourseID.">
                             </div>
                             <div class="form-group">
                                 <label for="Name">Course Name</label>
-                                <input type="text" name="txtcName" class="form-control" id="name" placeholder="Coursework Name" 
+                                <input type="text" name="txtcName" class="form-control" id="name" value="Web Development" placeholder="Coursework Name" 
                                        required data-validation-required-message="Please enter Course Name.">
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea name="txtDescription" class="form-control" id="name" placeholder="Description" value="Description"  
+                                <textarea name="txtDescription" class="form-control" id="name"placeholder="Description" value="Description"  
                                           required data-validation-required-message="Please enter some Detail."></textarea>
                             </div>
                             <div class="form-group">

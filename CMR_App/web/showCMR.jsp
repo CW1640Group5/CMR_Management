@@ -70,19 +70,23 @@
                                         <tr class="active"></tr>
                                         <tr class="success">
                                             <td class="active">Academic Session</td>
-                                            <td><input type="text" name="txtAcademicSession" value="Academic Session Test"/></td>
+                                            <td><input type="text" class="form-control" name="txtAcademicSession" placeholder="CMR Name" value="Academic Session Test"
+                                                       required data-validation-required-message="Please Enter Academic Session"/></td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Course Code + tittle</td>
-                                            <td><input type="text" name="txtCourse_id" value="comp_1661"/></td>
+                                            <td><input type="text" class="form-control" name="txtCourse_id" placeholder="comp_[Course_Number]" value="comp_1661"
+                                                       required data-validation-required-message="Please enter CourseID"/></td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Course Leader</td>
-                                            <td><input type="text" name="txtCl_id" value="cl001"/></td>
+                                            <td><input type="text" class="form-control" name="txtCl_id" placeholder="cl001" value="cl001"
+                                                       required data-validation-required-message="Please enter Course Leader Name"/></td>
                                         </tr>
                                         <tr class="success">
                                             <td class="success">Student Count</td>
-                                            <td><input type="text" name="txtStudentCount" value="25"/></td>
+                                            <td><input type="text" class="form-control" name="txtStudentCount" placeholder="25" value="25"
+                                                       required data-validation-required-message="Please enter Student count Number"/></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -257,5 +261,6 @@
         <!--end of footer-->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
     </body>
 </html>

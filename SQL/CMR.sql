@@ -102,44 +102,46 @@ CREATE TABLE CMR
 	Studentcount nvarchar(50),
 	comments text,
 	Action text,
+
+	MeanCW1 int,
+	MeanCW2 int,
+	MeanExam int,
+	MeanOverall int,
+
+	MedianCW1 int,
+	MedianCW2 int,
+	MedianExam int,
+	MedianOverall int,
+
+	SDCW1 int,
+	SDCW2 int,
+	SDExam int,
+	SDOverall int,
+
+	[0-39CW1] int,
+	[0-39CW2] int,
+	[0-39Exam] int,
+	[0-39Overall] int,
+
+	[40-69CW1] int,
+	[40-69CW2] int,
+	[40-69Exam] int,
+	[40-69Overall] int,
+
+	[70-89CW1] int,
+	[70-89CW2] int,
+	[70-89Exam] int,
+	[70-89Overall] int,
+
+	[90+CW1] int,
+	[90+CW2] int,
+	[90+Exam] int,
+	[90+Overall] int,
+
 	FOREIGN KEY (CL_id) REFERENCES CL(CL_id),
     FOREIGN KEY (Course_id) REFERENCES Course(Course_id)
   );
 go
-create table C_Data
-(
-	ID int primary key identity(1, 1),
-	cwName varchar (10)
-	--CW1 varchar(10),
-	--CW2 varchar(10),
-	--Exam varchar(10),
-	--Overall varchar(10),
-);
-go
-Create table StatisticalData
-(
-	id INT PRIMARY KEY identity,
-	CMR_id INT,
-	cwDataID int,
-	Mean text,
-	Median text,
-	StandardDeviation text,
-	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id),
-	FOREIGN KEY (cwDataID) REFERENCES C_Data(ID)
-);
-go
-create table GradeDistributionData(
-	id INT PRIMARY KEY identity,
-	CMR_id INT,	
-	cwDataID int,
-	[0-39] float,
-	[40-69] float,
-	[70-89] float,
-	[90+] float,
-	FOREIGN KEY (CMR_id) REFERENCES CMR(CMR_id),
-	FOREIGN KEY (cwDataID) REFERENCES C_Data(ID)
-);
-
 create table assignCourse(
 	asId int primary key identity(1, 1),
 	Course_id nvarchar(20),
@@ -222,15 +224,9 @@ insert into DLT values('DLT_02', 2, 'fac002');
 insert into DLT values('DLT_03', 3, 'fac003');
 insert into DLT values('DLT_04', 16, 'fac004');
 go
-insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '25', 'comments 1', 'Action1');
-insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2');
-insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3');
-
-
-go
-insert into C_Data
-values ('CW1'), ('CW2'), ('Exam'), ('Overall');
-select * from C_Data
+insert into CMR values ('AcademicSession1', 'comp_1640', 'cl001', 'static 1', '25', 'comments 1', 'Action1',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+insert into CMR values ('AcademicSession2', 'comp_1649', 'cl002', 'static 2', '23', 'comments 2', 'Action2',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+insert into CMR values ('AcademicSession3', 'comp_1661', 'cl003', 'static 3', '22', 'comments 3', 'Action3',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
 
 go
 insert into assignCourse values('comp_1640','cl001','cm001','fac001');
@@ -238,7 +234,6 @@ insert into assignCourse values('comp_1649','cl002','cm002','fac002');
 insert into assignCourse values('comp_1661','cl003','cm003', 'fac003');
 
 select * from assignCourse
-select * from StatisticalData
 select * from CMR
 select * from Course
 --END INSERT DATABASE
