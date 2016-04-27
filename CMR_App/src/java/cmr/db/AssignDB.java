@@ -27,7 +27,7 @@ public class AssignDB {
             if (rs.next()) {
                 course_id = rs.getString("Course_id");
             }
-            System.out.println(course_id);
+//            System.out.println(course_id);
             return course_id;
         } catch (SQLException ex) {
             Logger.getLogger(AssignDB.class.getName()).log(Level.SEVERE, null, ex);

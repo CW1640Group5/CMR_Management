@@ -1,5 +1,5 @@
 <!doctype html>
-<%@page import="cmr.entity.AssignCourse"%>
+<%--<%@page import="cmr.entity.AssignCourse"%>--%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

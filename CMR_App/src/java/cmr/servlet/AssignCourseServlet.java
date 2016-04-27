@@ -92,7 +92,7 @@ public class AssignCourseServlet extends HttpServlet {
         String cm_id = request.getParameter("cbCM_id");
         String fac_id = request.getParameter("cbfac_id");
 
-        if (course_id.equals("") || cl_id.equals("0") || cm_id.equals("0")) {
+        if (course_id.equals("") || course_id.equals("comp_") || cl_id.equals("0") || cm_id.equals("0")) {
             request.setAttribute("msgR", "Course_id or cl_id, cm_id can not be null or default.");
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/AdminAssign.jsp");
             dispatcher.forward(request, response);

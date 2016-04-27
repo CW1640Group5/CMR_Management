@@ -212,19 +212,69 @@ exec usp_addNewCMR
 	@90_CW2=1,
 	@90_Exam=1,
 	@90_Overall=1
-
+select* from CMR
 select* from Course
 select* from assignCourse
 
 --end insert new CMR by CL
 
+--show lastCMR
+
+
+--END show lastCMR
+drop procedure usp_getCMR
+go
+create procedure usp_getCMR
+as 
+begin
+	select top 1 
+	AcademicSession, 
+	Course_id, 
+	CL_id, 
+	Studentcount, 
+
+	MeanCW1, 
+	MeanCW2, 
+	MeanExam, 
+	MeanOverall, 
+
+	MedianCW1, 
+	MedianCW2, 
+	MedianExam, 
+	MedianOverall,
+
+	SDCW1,
+	SDCW2,
+	SDExam,
+	SDOverall,
+
+	[0-39CW1],
+	[0-39CW2],
+	[0-39Exam],
+	[0-39Overall],
+
+	[40-69CW1],
+	[40-69CW2],
+	[40-69Exam],
+	[40-69Overall],
+
+	[70-89CW1],
+	[70-89CW2],
+	[70-89Exam],
+	[70-89Overall],
+
+	[90+CW1],
+	[90+CW2],
+	[90+Exam],
+	[90+Overall]
+	 from CMR ORDER BY CMR_id DESC
+end
+exec usp_getCMR;
 
 -- ASSIGN COURSE
-
 drop procedure usp_getCourseID
 go
 create procedure usp_getCourseID
-
 as 
 begin 
 	SELECT top 1 Course_id FROM Course ORDER BY Course_id DESC
@@ -234,8 +284,6 @@ select * from Course
 go
 select * from CL;
 select * from CM;
-
-
 
 drop procedure usp_assignCourseToCL
 go

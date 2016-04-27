@@ -55,8 +55,9 @@
                         <h5>Start time: 01-01-2016</h5>
                         <h5>End time: 01-03-2016</h5>
                         <h5>Course leader: John</h5>
-                        <button type="button" class="btn btn-default" id="contactbtn">>> Go</button>
-                    </div>
+                        <a href="AddNewCMR.jsp">
+                            <button type="button" class="btn btn-default" id="contactbtn">>> Go</button>
+                        </a>                    </div>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -66,7 +67,9 @@
                         <h5>Start time: 01-01-2016</h5>
                         <h5>End time: 01-03-2016</h5>
                         <h5>Course leader: John</h5>
-                        <button type="button" class="btn btn-default" id="contactbtn">>> Go</button>
+                        <a href="AddNewCMR.jsp">
+                            <button type="button" class="btn btn-default" id="contactbtn">>> Go</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -77,8 +80,9 @@
                         <h5>Start time: 01-01-2016</h5>
                         <h5>End time: 01-03-2016</h5>
                         <h5>Course leader: John</h5>
-                        <button type="button" class="btn btn-default" id="contactbtn">>> Go</button>
-                    </div>
+                        <a href="AddNewCMR.jsp">
+                            <button type="button" class="btn btn-default" id="contactbtn">>> Go</button>
+                        </a>                    </div>
                 </div>
             </div>
         </div>
